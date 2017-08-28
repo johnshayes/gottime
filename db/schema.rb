@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170828135913) do
+ActiveRecord::Schema.define(version: 20170828140452) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "listings", force: :cascade do |t|
+    t.datetime "offerred_datetime"
+    t.string "activity"
+    t.string "location"
+    t.string "comment"
+    t.string "friends_circle"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_listings_on_user_id"
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.bigint "listing_id"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["listing_id"], name: "index_meetings_on_listing_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "meeting_id"
+    t.string "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meeting_id"], name: "index_messages_on_meeting_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "meeting_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["meeting_id"], name: "index_participants_on_meeting_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -39,4 +78,10 @@ ActiveRecord::Schema.define(version: 20170828135913) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "listings", "users"
+  add_foreign_key "meetings", "listings"
+  add_foreign_key "messages", "meetings"
+  add_foreign_key "messages", "users"
+  add_foreign_key "participants", "meetings"
+  add_foreign_key "participants", "users"
 end
