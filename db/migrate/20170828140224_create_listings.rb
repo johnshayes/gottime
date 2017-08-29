@@ -1,7 +1,7 @@
 class CreateListings < ActiveRecord::Migration[5.1]
   def change
     create_table :listings do |t|
-      t.datetime :offerred_datetime
+      t.datetime :offered_datetime
       t.string :activity
       t.string :location
       t.string :comment
