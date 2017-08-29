@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-# ruby encoding: utf-8
+# encoding: utf-8
 
 user = User.create(first_name: "Moritz", last_name: "Wahrlich", password: "testtest")
 
@@ -61,7 +61,7 @@ end
 
 listings_content = [
 {
-  activity: "Mo money, mo problems",
+  activity: "🤷",
   location: "Berlin",
   comment: "Fuck bitches get money",
   offered_datetime_text: "Now"
