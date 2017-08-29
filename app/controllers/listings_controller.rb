@@ -12,17 +12,34 @@ class ListingsController < ApplicationController
   end
 
   def create
-    @listing = Listing.create(listing_params)
-    if current_user
-      @listing.user = User.find(current_user.id)
-    else
-      @listing.user = User.find(1)
-    end
+    # @listing = Listing.create(listing_params)
+
+    @listing = Listing.new
+
+    @listing.offered_datetime_text = params[:listing][:offered_datetime_text]
+    @listing.offered_datetime = what_is_datetime_text?(params[:listing][:offered_datetime_text])
+
+    @listing.activity = params[:listing][:activity]
+
+    @listing.user = User.find(current_user.id)
+
     @listing.save
-    redirect_to listings_path
+
+    redirect_to listing_path(@listing)
   end
 
   def listing_params
     params.require(:listing).permit(:activity, :offered_datetime_text)
   end
+
+  def what_is_datetime_text?(offered_datetime_text)
+    return case offered_datetime_text
+      when "NOW" then DateTime.now
+      when "+1h" then DateTime.now + 1.hours
+      when "+2h" then DateTime.now + 2.hours
+      when "TONIGHT" then DateTime.now.change({ hour: 20 })
+    end
+  end
+
+
 end
