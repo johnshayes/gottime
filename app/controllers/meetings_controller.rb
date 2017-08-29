@@ -12,11 +12,11 @@ class MeetingsController < ApplicationController
     end
   end
 
-  # def create_particpant
-  #   @particpant = Particpant.new() # To create new, empty particpant instance
-  #   @particpant.user = current_user # To set user_id onto particpant instance
-  #   @particpant.meeting = @meeting # To set meeting_id onto particpant instance
-  # end
+  def create_particpant
+    @particpant = Particpant.new(user: current_user, meeting: @meeting) # To create new particpant instance
+    # @particpant.user = current_user # To set user_id onto particpant instance
+    # @particpant.meeting = @meeting # To set meeting_id onto particpant instance
+  end
 
   def show
     # Url: /listings/:listing_id/meetings/:id(.:format) (path: listing_meeting GET)
@@ -28,4 +28,6 @@ private
     params.require(:meeting).permit(:status) # What does :meeting refer to?
   end
 end
+
+
 
