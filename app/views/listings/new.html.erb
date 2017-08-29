@@ -1,34 +1,32 @@
 <br>
 <br>
-
-<%= simple_form_for(@listing) do |f| %>
-  <%= f.error_notification %>
-
-<!--   <%= f.input :offered_datetime_text, collection: [ "NOW", "+1h", "+2h", "TONIGHT"], prompt: "Select your time" %> -->
-<!--   <%= f.input :activity, collection: [ "Coffee", "Drinks", "Party", "Movies"], prompt: "Select your activity" %> -->
-
-  <%= f.hidden_field :offered_datetime_text, value: @offered_datetime_text_options[0]  %>
-  <%= f.hidden_field :activity, value: @activity_options[0]  %>
+<div class="container form">
+  <%= simple_form_for(@listing) do |f| %>
+    <%= f.error_notification %>
 
 
-<div class="selector offered_datetime_text_selector">
-  <% @offered_datetime_text_options.each do |option| %>
-    <div><%= option %></div>
+    <%= f.hidden_field :offered_datetime_text, value: @offered_datetime_text_options[0]  %>
+    <%= f.hidden_field :activity, value: @activity_options[0]  %>
+
+
+  <div class="selector offered_datetime_text_selector">
+    <% @offered_datetime_text_options.each do |option| %>
+      <div><%= option %></div>
+    <% end %>
+  </div>
+
+  <div class="selector activity_selector">
+    <% @activity_options.each do |option| %>
+      <div><%= option %></div>
+    <% end %>
+  </div>
+
+
+    <%= f.button :submit %>
   <% end %>
+
+
 </div>
-
-<div class="selector activity_selector">
-  <% @activity_options.each do |option| %>
-    <div><%= option %></div>
-  <% end %>
-</div>
-
-
-  <%= f.button :submit %>
-<% end %>
-
-
-
 
 
 
@@ -37,9 +35,9 @@
 
 <% content_for(:after_js) do %>
   <%= javascript_tag do %>
-$('.selector').slick({
+$('.offered_datetime_text_selector').slick({
   centerMode: true,
-  centerPadding: '60px',
+  centerPadding: '5px',
   slidesToShow: 5,
   responsive: [
     {
@@ -47,7 +45,7 @@ $('.selector').slick({
       settings: {
         arrows: false,
         centerMode: true,
-        centerPadding: '40px',
+        centerPadding: '20px',
         slidesToShow: 5
       }
     },
@@ -56,14 +54,39 @@ $('.selector').slick({
       settings: {
         arrows: false,
         centerMode: true,
-        centerPadding: '40px',
-        slidesToShow: 1
+        centerPadding: '20px',
+        slidesToShow: 3
       }
     }
   ]
 });
 
-
+// On before DateTime change
+$('.activity_selector').slick({
+  centerMode: true,
+  centerPadding: '5px',
+  slidesToShow: 10,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20px',
+        slidesToShow: 5
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20px',
+        slidesToShow: 3
+      }
+    }
+  ]
+});
 
 
 // On before DateTime change
