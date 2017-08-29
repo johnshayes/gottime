@@ -1,14 +1,22 @@
 
 
 
-<%= @listing %>
+
+
+Datetime_text:
+<em> <%= @listing.offered_datetime_text %></em>
 <br>
 
 Datetime:
-<%= @listing.offered_datetime_text %>
+<em> <%= @listing.offered_datetime %> </em>
 <br>
 
 Activity:
-<%= @listing.activity %>
+<em> <%= @listing.activity %> </em>
 
 
+
+<br>
+<br>
+
+<%= link_to "New Listing", new_listing_path %>
