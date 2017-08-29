@@ -1,0 +1,24 @@
+
+<h2>Yaye, a match! Have fun!</h2>
+<br>
+
+<ul>
+<li>Placeholder: Listing owner image here</li>
+<li>Listing owner first_name: <%= @meeting.listing.user.first_name %></li>
+
+<!--
+Later:
+if @meeting.participants.present?
+@meeting.participants.first.user.first_name <- .first because participants will be an array
+-->
+<br>
+<li>Placeholder: Participant image here</li>
+<li>Placeholder: Participant first_name here</li>
+
+<br>
+<li>Activity: <%= @meeting.listing.activity %></li>
+<li>Offered_datetime_text: <%= @meeting.listing.offered_datetime_text %></li>
+</ul>
+
+
+
