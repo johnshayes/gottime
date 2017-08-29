@@ -1,23 +1,108 @@
+<br>
+<br>
+<div class="container form">
+  <%= simple_form_for(@listing) do |f| %>
+    <%= f.error_notification %>
 
 
+    <%= f.hidden_field :offered_datetime_text, value: @offered_datetime_text_options[0]  %>
+    <%= f.hidden_field :activity, value: @activity_options[0]  %>
 
-  <div class="container-fluid">
-  <div class="row">
-      <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-sm-offset-3 col-md-offset-3 col-lg-offset-4">
-          <div class="booking-wrapper">
-            <h2>Please enter your booking dates:</h2>
-            <%= simple_form_for([ @listing ]) do |form| %>
-            <div id="sandbox-container">
-              <div class="input-group input-daterange">
-                <%= form.input :offered_datetime_text, as: :string, input_html: { class: 'dates_booked' } %>
-                <div class="input-group-addon datepickertoinvisible"></div>
-                <%= form.input :activity, as: :string, input_html: { class: 'dates_booked' } %>
-              </div>
-            </div>
 
-            <br>
-            <%= form.button :submit %>
-            <% end %>
-          </div>
-        </div>
+  <div class="selector offered_datetime_text_selector">
+    <% @offered_datetime_text_options.each do |option| %>
+      <div><%= option %></div>
+    <% end %>
   </div>
+
+  <div class="selector activity_selector">
+    <% @activity_options.each do |option| %>
+      <div><%= option %></div>
+    <% end %>
+  </div>
+
+
+    <%= f.button :submit %>
+  <% end %>
+
+
+</div>
+
+
+
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$('.offered_datetime_text_selector').slick({
+  centerMode: true,
+  centerPadding: '5px',
+  slidesToShow: 5,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20px',
+        slidesToShow: 5
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20px',
+        slidesToShow: 3
+      }
+    }
+  ]
+});
+
+// On before DateTime change
+$('.activity_selector').slick({
+  centerMode: true,
+  centerPadding: '5px',
+  slidesToShow: 10,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20px',
+        slidesToShow: 5
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '20px',
+        slidesToShow: 3
+      }
+    }
+  ]
+});
+
+
+// On before DateTime change
+$('.offered_datetime_text_selector').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  var offered_datetime_text_options = <%= @offered_datetime_text_options.to_json.html_safe %>
+  $('#listing_offered_datetime_text').attr('value', offered_datetime_text_options[nextSlide]);
+
+
+});
+
+// On before Activity change
+$('.activity_selector').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  var activity_options = <%= @activity_options.to_json.html_safe %>
+  $('#listing_activity').attr('value', activity_options[nextSlide]);
+});
+
+
+  <% end %>
+<% end %>
