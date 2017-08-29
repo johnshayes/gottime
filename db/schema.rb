@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20170829092547) do
   enable_extension "plpgsql"
 
   create_table "listings", force: :cascade do |t|
-    t.datetime "offerred_datetime"
+    t.datetime "offered_datetime"
     t.string "activity"
     t.string "location"
     t.string "comment"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20170829092547) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "offerred_datetime_text"
+    t.string "offered_datetime_text"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
