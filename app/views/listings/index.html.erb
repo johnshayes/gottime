@@ -1,52 +1,35 @@
 <div class="index-wrapper">
-  <div class="top-wrapper">
-    <div class="row row-positioning row-styling">
 
-      <% @listings %>
+  <% @listings %>
 
-      <div class="col-xs-3 col-xs-offset-3">
-        <div class="align">
-          <p><%= current_user.first_name %> <%= current_user.last_name %></p>
-        </div>
-      </div>
-
-      <div class="col-xs-3">
-        <div class="align">
-          <p><%= current_user.listings.last.activity %></p>
-        </div>
-      </div>
-
-      <div class="col-xs-3">
-        <div class="align">
-          <p><%= current_user.listings.last.offered_datetime_text %></p>
-        </div>
-      </div>
+  <div class="plan current-user-plan">
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
+    <div class="plan-info">
+      <p class="plan-user"><%= current_user.first_name %></p>
+      <p class="plan-emoji"><%= current_user.listings.last.activity %></p>
+      <p><%= current_user.listings.last.offered_datetime_text %></p>
+      <%= link_to listing_path(@listings) do  %>
+      <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+      <% end %>
     </div>
   </div>
+
 
   <% @listings.each do |listing| %>
 
-  <div class="row row-positioning row-styling">
-
-    <div class="col-xs-3 col-xs-offset-3">
-      <div class="align">
-        <p><%= listing.user.first_name %></p>
-      </div>
+  <div class="plan">
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
+    <div class="plan-info">
+      <p class="plan-user"><%= listing.user.first_name %></p>
+      <p class="plan-emoji"><%= listing.activity %></p>
+      <p><%= listing.offered_datetime_text %></p>
+      <%= link_to listing_path(listing) do  %>
+      <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+      <% end %>
     </div>
-
-    <div class="col-xs-3">
-      <div class="align">
-        <p><%= listing.activity %></p>
-      </div>
-    </div>
-
-    <div class="col-xs-3">
-      <div class="align">
-        <p><%= listing.offered_datetime_text %></p>
-      </div>
-    </div>
-
   </div>
+
+
   <% end %>
 </div>
 
