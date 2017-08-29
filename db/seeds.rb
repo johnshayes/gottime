@@ -59,20 +59,20 @@ user_list.each do |parameters|
   User.create(parameters)
 end
 
-# listings_content = [
-# {
-#   activity: "Mo money, mo problems",
-#   location: "Berlin",
-#   comment: "Fuck bitches get money",
-#   offerred_datetime_text: "Now"
-#   }]
+listings_content = [
+{
+  activity: "Mo money, mo problems",
+  location: "Berlin",
+  comment: "Fuck bitches get money",
+  offered_datetime_text: "Now"
+  }]
 
-# User.all.each do |user|
-#   listings_content.each do |listing_params|
-#     l = Listing.new(listing_params)
-#     l.user = user
-#     l.save!
-#   end
+User.all.each do |user|
+  listings_content.each do |listing_params|
+    l = Listing.new(listing_params)
+    l.user = user
+    l.save!
+  end
 
-#   user.save!
-# end
+  user.save!
+end
