@@ -1,8 +1,27 @@
+<br>
+<br>
+
 <%= simple_form_for(@listing) do |f| %>
   <%= f.error_notification %>
 
-  <%= f.input :offered_datetime_text, collection: [ "NOW", "+1h", "+2h", "TONIGHT"], prompt: "Select your time" %>
-  <%= f.input :activity, collection: [ "Coffee", "Drinks", "Party", "Movies"], prompt: "Select your activity" %>
+<!--   <%= f.input :offered_datetime_text, collection: [ "NOW", "+1h", "+2h", "TONIGHT"], prompt: "Select your time" %> -->
+<!--   <%= f.input :activity, collection: [ "Coffee", "Drinks", "Party", "Movies"], prompt: "Select your activity" %> -->
+
+  <%= f.hidden_field :offered_datetime_text, value: @offered_datetime_text_options[0]  %>
+  <%= f.hidden_field :activity, value: @activity_options[0]  %>
+
+
+<div class="selector offered_datetime_text_selector">
+  <% @offered_datetime_text_options.each do |option| %>
+    <div><%= option %></div>
+  <% end %>
+</div>
+
+<div class="selector activity_selector">
+  <% @activity_options.each do |option| %>
+    <div><%= option %></div>
+  <% end %>
+</div>
 
 
   <%= f.button :submit %>
@@ -10,11 +29,57 @@
 
 
 
-<h1>Page with slick</h1>
 
-<div class="scroller">
-  <div>1</div>
-  <div>2</div>
-  <div>3</div>
-</div>
 
+
+
+
+
+<% content_for(:after_js) do %>
+  <%= javascript_tag do %>
+$('.selector').slick({
+  centerMode: true,
+  centerPadding: '60px',
+  slidesToShow: 5,
+  responsive: [
+    {
+      breakpoint: 768,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 5
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        arrows: false,
+        centerMode: true,
+        centerPadding: '40px',
+        slidesToShow: 1
+      }
+    }
+  ]
+});
+
+
+
+
+// On before DateTime change
+$('.offered_datetime_text_selector').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  var offered_datetime_text_options = <%= @offered_datetime_text_options.to_json.html_safe %>
+  $('#listing_offered_datetime_text').attr('value', offered_datetime_text_options[nextSlide]);
+
+
+});
+
+// On before Activity change
+$('.activity_selector').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+  var activity_options = <%= @activity_options.to_json.html_safe %>
+  $('#listing_activity').attr('value', activity_options[nextSlide]);
+});
+
+
+  <% end %>
+<% end %>

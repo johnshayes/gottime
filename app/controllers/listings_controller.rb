@@ -9,6 +9,10 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
+    # OPTIONS TO BE EXTRACTED FROM USER PROFILE LATER -- PERSONAL PREFERENCES
+    @offered_datetime_text_options = [ "NOW", "+1h", "+2h", "TONIGHT", "NOW", "+1h", "+2h", "TONIGHT"]
+    @activity_options = [ "Whatever", "Coffee", "Drinks", "Party", "Movies", "Coffee", "Drinks", "Party", "Movies"]
+
   end
 
   def create
