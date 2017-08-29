@@ -1,3 +1,8 @@
-<%= @listings.first %>
-
-
+  <% @listings %>
+  <p><%= current_user.first_name %> <%= current_user.last_name %></p>
+  <p><%= current_user.listings.last.activity %></p>
+  <% @listings.each do |listing| %>
+  <p><%= listing.user.first_name %></p>
+  <p><%= listing.activity %></p>
+  <p><%= listing.offered_datetime_text %></p>
+<% end %>
