@@ -8,7 +8,7 @@ class MeetingsController < ApplicationController
     if @meeting.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
-      redirect_to listing_path # i.e. redirect to the listing detail page if it fails to save
+      redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save
     end
   end
 
