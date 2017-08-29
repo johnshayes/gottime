@@ -28,8 +28,15 @@
 
 </div>
 
-
-
+<br>
+<br>
+<br>
+<br>
+  <div class="selector activity_selector">
+    <% @activity_options.each do |option| %>
+      <div><%= option %></div>
+    <% end %>
+  </div>
 
 
 
@@ -39,26 +46,7 @@ $('.offered_datetime_text_selector').slick({
   centerMode: true,
   centerPadding: '5px',
   slidesToShow: 5,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '20px',
-        slidesToShow: 5
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '20px',
-        slidesToShow: 3
-      }
-    }
-  ]
+  arrows: false
 });
 
 // On before DateTime change
@@ -66,26 +54,8 @@ $('.activity_selector').slick({
   centerMode: true,
   centerPadding: '5px',
   slidesToShow: 10,
-  responsive: [
-    {
-      breakpoint: 768,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '20px',
-        slidesToShow: 5
-      }
-    },
-    {
-      breakpoint: 480,
-      settings: {
-        arrows: false,
-        centerMode: true,
-        centerPadding: '20px',
-        slidesToShow: 3
-      }
-    }
-  ]
+  arrows: false,
+  swipeToSlide: true
 });
 
 
