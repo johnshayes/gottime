@@ -1,7 +1,18 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-
-
 <% content_for :head do %>
   <meta name="turbolinks-cache-control" content="no-cache">
 <% end %>
+
+<div class="background">
+  <div class="welcome">
+    <h1>Welcome to Quokka</h1>
+    <h2>Meet your friends spontaneously!</h2>
+  </div>
+    <div class="sign-in sign-in-home">
+      <% unless current_user %>
+        <%= link_to "Sign in with Facebook", user_facebook_omniauth_authorize_path %>
+      <% else %>
+        <%= link_to "Logout", destroy_user_session_path, method: :delete %>
+      <% end %>
+
+  </div>
+</div>
