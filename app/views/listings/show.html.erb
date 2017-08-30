@@ -20,5 +20,8 @@ Activity:
 Join:
 <%= link_to "Create a huddle", listing_meetings_path(listing_id: @listing.id, meeting: {status: nil}), method: :post %>
 
+<%= if current_user.owns? listing %>
+<%= link_to "Delete a huddle ", listings_path, method: :delete %>
+<%= end %>
 <br>
 <br>
