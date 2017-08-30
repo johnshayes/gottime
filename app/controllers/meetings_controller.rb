@@ -23,6 +23,15 @@ class MeetingsController < ApplicationController
     # Rails.logger.info current_user.attributes
   end
 
+
+  # Private index page for current_user
+  def index
+    @meetings = Participant.where(user_id: current_user.id).collect { |p| p.meeting }
+
+
+
+  end
+
 private
   def meeting_params
     params.require(:meeting).permit(:status) # What does :meeting refer to?
