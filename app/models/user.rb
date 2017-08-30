@@ -29,4 +29,8 @@ class User < ApplicationRecord
 
     return user
   end
+
+  def listings_without_match
+    listings.select { |listing| listing.meetings.empty? }
+  end
 end
