@@ -5,6 +5,6 @@ class ApplicationController < ActionController::Base
 private
 
   def after_sign_up
-    redirect_to new_listing_path
+    # redirect_to new_listing_path
   end
 end
