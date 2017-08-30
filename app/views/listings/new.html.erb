@@ -9,17 +9,34 @@
     <%= f.hidden_field :activity, value: @activity_options[0]  %>
 
 
+<br>
+<br>
+
+<div class="arrow text-center">
+  <i class="fa fa-chevron-down"></i>
+</div>
+
   <div class="selector offered_datetime_text_selector">
     <% @offered_datetime_text_options.each do |option| %>
       <div><%= option %></div>
     <% end %>
   </div>
 
+<br>
+
+<br>
+<br>
+
+
+<div class="arrow text-center">
+  <i class="fa fa-chevron-down"></i>
+</div>
   <div class="selector activity_selector">
     <% @activity_options.each do |option| %>
       <div><%= option %></div>
     <% end %>
   </div>
+
 
 
     <%= f.button :submit %>
@@ -28,15 +45,7 @@
 
 </div>
 
-<br>
-<br>
-<br>
-<br>
-  <div class="selector activity_selector">
-    <% @activity_options.each do |option| %>
-      <div><%= option %></div>
-    <% end %>
-  </div>
+
 
 
 
@@ -44,18 +53,23 @@
   <%= javascript_tag do %>
 $('.offered_datetime_text_selector').slick({
   centerMode: true,
-  centerPadding: '5px',
-  slidesToShow: 5,
-  arrows: false
+  centerPadding: '6px',
+  slidesToShow: 3,
+  arrows: false,
+  swipeToSlide: true
 });
 
 // On before DateTime change
 $('.activity_selector').slick({
   centerMode: true,
-  centerPadding: '5px',
-  slidesToShow: 10,
+  centerPadding: '10px',
+  slidesToShow: 5,
   arrows: false,
-  swipeToSlide: true
+  swipeToSlide: true,
+  draggable: true,
+  focusOnSelect: true,
+  mobileFirst: true,
+  waitForAnimate: false
 });
 
 
