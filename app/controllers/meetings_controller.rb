@@ -6,16 +6,13 @@ class MeetingsController < ApplicationController
     @listing = Listing.find(params[:listing_id]) # Find listing using listing_id from url
     @meeting.listing = @listing # Makes the connection i.e. sets listing_id onto this new meeting instance
     if @meeting.save
-      create_participant
+      byebug
+      @particpant = Particpant.new(user: current_user, meeting: @meeting) # To create new particpant instance
+      @participant.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
       redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save
     end
-  end
-
-  def create_particpant
-    @particpant = Particpant.new(user: current_user, meeting: @meeting) # To create new particpant instance
-    @participant.save
   end
 
   def show
