@@ -29,7 +29,7 @@ class ListingsController < ApplicationController
 
     @listing.save
 
-    redirect_to listings_path
+    redirect_to listing_path
   end
 
   def listing_params
