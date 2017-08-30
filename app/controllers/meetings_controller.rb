@@ -50,7 +50,7 @@ private
     @twilio_number = ENV['TWILIO_NUMBER']
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     @client = Twilio::REST::Client.new account_sid, ENV['TWILIO_AUTH_TOKEN']
-    text = "Hi #{@your_name}, you and #{@host_name} are all set up for #{@activity} #{@offered_datetime_text} "
+    text = "Hi #{@your_name}, you and #{@host_name} are meeting #{@offered_datetime_text} for #{@activity}! Manage your meetings at URL_TO_BE_ADDED"
     message = @client.api.account.messages.create(
       :from => @twilio_number,
       :to => "+4915140510325",
