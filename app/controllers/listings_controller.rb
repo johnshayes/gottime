@@ -32,6 +32,20 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
+  def edit
+    @listing = Listing.find(params[:id])
+  end
+
+  def update
+    @listing = Listing.find(params[:id])
+    @listing.update(listing_params)
+  end
+
+  def delete
+    @listing = Listing.find(params[:id])
+    @listing.destroy
+  end
+
   def listing_params
     params.require(:listing).permit(:activity, :offered_datetime_text)
   end
