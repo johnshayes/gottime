@@ -76,3 +76,6 @@ User.all.each do |user|
 
   user.save!
 end
+
+Meeting.create(listing: Listing.last, status: "OK")
+Meeting.create(listing: Listing.first, status: "OK")
