@@ -12,4 +12,7 @@ Rails.application.routes.draw do
   end
 
   resources :meetings, only: [ :index ]
+
+  post 'twilio/voice' => 'twilio#voice'
+
 end

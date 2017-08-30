@@ -8,11 +8,14 @@ class MeetingsController < ApplicationController
     # To create new particpant instance
     @meeting.participants.build(user: current_user)
 
+    match_message(@listing)
+
     if @meeting.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
       redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save
     end
+
   end
 
   def show
@@ -28,15 +31,41 @@ class MeetingsController < ApplicationController
   def index
     @meetings = Participant.where(user_id: current_user.id).collect { |p| p.meeting }
 
-
-
   end
 
 private
   def meeting_params
     params.require(:meeting).permit(:status) # What does :meeting refer to?
   end
+
+
+ def match_message(listing)
+    @activity = listing.activity
+    @host_name = User.find(listing.user_id).first_name
+    @offered_datetime_text = listing.offered_datetime_text
+
+
+    @your_name = current_user.first_name
+
+    @twilio_number = ENV['TWILIO_NUMBER']
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    @client = Twilio::REST::Client.new account_sid, ENV['TWILIO_AUTH_TOKEN']
+    text = "Hi #{@your_name}, you and #{@host_name} are all set up for #{@activity} #{@offered_datetime_text} "
+    message = @client.api.account.messages.create(
+      :from => @twilio_number,
+      :to => "+4915140510325",
+      :body => text,
+    )
+  end
+
+
+
+
+
+
 end
 
 
+
+ENV["FB_ID"]
 
