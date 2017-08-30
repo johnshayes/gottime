@@ -12,12 +12,16 @@
     justify-content: space-between;
     padding-right: 10px;
     padding-left: 20px;
+    text-align: center;
   }
   .plan-user {
     flex: 0 0 100px;
   }
   .plan-emoji {
     font-size: 30px;
+  }
+  .plan-datetime{
+    flex: 0 0 100px;
   }
   img {
     width: 50px;
@@ -29,7 +33,7 @@
   }
 
   .chevron-color {
-    color: black;
+    color: $gray;
   }
 }
 
@@ -39,4 +43,12 @@
 
 .current-user-plan {
   background-color: #DA3E52;
+  .plan-info {
+    height: 65px;
+  }
+}
+
+.plan-sticky {
+  position: sticky;
+  top: 0px;
 }

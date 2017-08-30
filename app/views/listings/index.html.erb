@@ -1,19 +1,19 @@
 <div class="index-wrapper">
-
-  <% current_user.listings_without_match.each do |listing| %>
+  <div class="plan-sticky">
+    <% current_user.listings_without_match.each do |listing| %>
     <div class="plan current-user-plan">
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
+      <%= image_tag current_user.facebook_picture_url, class: "img-cirlce" %>
       <div class="plan-info">
         <p class="plan-user"><%= current_user.first_name %></p>
         <p class="plan-emoji"><%= listing.activity %></p>
-        <p><%= listing.offered_datetime_text %></p>
+        <p class="plan-datetime"><%= listing.offered_datetime_text %></p>
         <%= link_to listing_path(listing) do  %>
-          <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+        <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
         <% end %>
       </div>
     </div>
-  <% end %>
-
+    <% end %>
+  </div>
 
   <% @listings.each do |listing| %>
 
@@ -22,13 +22,12 @@
     <div class="plan-info">
       <p class="plan-user"><%= listing.user.first_name %></p>
       <p class="plan-emoji"><%= listing.activity %></p>
-      <p><%= listing.offered_datetime_text %></p>
+      <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
       <%= link_to listing_path(listing) do  %>
       <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
       <% end %>
     </div>
   </div>
-
 
   <% end %>
 </div>
