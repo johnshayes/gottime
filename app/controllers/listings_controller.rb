@@ -1,6 +1,11 @@
 class ListingsController < ApplicationController
   def index
-    @listings = Listing.all.where.not(user_id: current_user.id)
+    user_friends = FacebookApi.new(current_user.token).friends
+    uids = user_friends.map do |friend|
+      friend["id"]
+    end
+    users = User.where(uid: uids).pluck(:id)
+    @listings = Listing.where.not(user_id: current_user.id).where(user_id: users)
   end
 
   def show

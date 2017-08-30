@@ -12,6 +12,7 @@ gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'omniauth-facebook'
 gem 'simple_form'
+gem 'koala', '~> 2.4'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
