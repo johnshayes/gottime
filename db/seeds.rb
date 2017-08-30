@@ -8,6 +8,12 @@
 
 # encoding: utf-8
 
+Listing.destroy_all
+User.destroy_all
+
+
+
+
 user = User.create(first_name: "Moritz", last_name: "Wahrlich", password: "testtest")
 
 user_list = [
