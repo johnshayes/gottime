@@ -9,16 +9,14 @@
 <!--
 Later:
 if @meeting.participants.present?
-@meeting.participants.first.user.first_name <- .first because participants will be an array
+ <- .first because participants will be an array
 -->
 <br>
 <li>Placeholder: Participant image here</li>
-<li>Placeholder: Participant first_name here</li>
+<li>Participant first_name: <%= @meeting.participants.first.user.first_name %></li>
 
 <br>
 <li>Activity: <%= @meeting.listing.activity %></li>
 <li>Offered_datetime_text: <%= @meeting.listing.offered_datetime_text %></li>
 </ul>
-
-
 
