@@ -8,6 +8,12 @@
 
 # encoding: utf-8
 
+Listing.destroy_all
+User.destroy_all
+
+
+
+
 user = User.create(first_name: "Moritz", last_name: "Wahrlich", password: "testtest")
 
 user_list = [
@@ -77,5 +83,5 @@ User.all.each do |user|
   user.save!
 end
 
-Meeting.create(listing_id: Listing.last, status: "OK")
-Meeting.create(listing_id: Listing.first, status: "OK")
+Meeting.create(listing: Listing.last, status: "OK")
+Meeting.create(listing: Listing.first, status: "OK")
