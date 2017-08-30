@@ -4,7 +4,7 @@
 
 <ul>
 <li>Placeholder: Listing owner image here</li>
-<li>Listing owner first_name: <%= @meeting.listing.user.first_name %></li>
+<li>Listing owner first_name: <%= @listing.user.first_name %></li>
 
 <!--
 Later:
@@ -13,10 +13,10 @@ if @meeting.participants.present?
 -->
 <br>
 <li>Placeholder: Participant image here</li>
-<li>Participant first_name: <%= @meeting.participants.first.user.first_name %></li>
+<li>Participant first_name: <%= @participants.first.user.first_name %></li>
 
 <br>
 <li>Activity: <%= @meeting.listing.activity %></li>
-<li>Offered_datetime_text: <%= @meeting.listing.offered_datetime_text %></li>
+<li>Offered_datetime_text: <%= @listing.offered_datetime_text %></li>
 </ul>
 
