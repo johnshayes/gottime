@@ -41,31 +41,25 @@ private
  def match_notification(listing)
 
     @activity = listing.activity
-    @host_name = User.find(listing.user_id).first_name
+    @host = User.find(listing.user_id)
+    @guest = current_user
+
+
+
     @offered_datetime_text = listing.offered_datetime_text
 
-    @your_name = current_user.first_name
 
     @twilio_number = ENV['TWILIO_NUMBER']
     account_sid = ENV['TWILIO_ACCOUNT_SID']
     @client = Twilio::REST::Client.new account_sid, ENV['TWILIO_AUTH_TOKEN']
-    text = "Hi #{@your_name}, you and #{@host_name} are meeting #{@offered_datetime_text} for #{@activity}! Manage your meetings at URL_TO_BE_ADDED"
+    text = "Hi #{@guest.first_name}, you and #{@host.first_name} are meeting #{@offered_datetime_text} for #{@activity}! Manage your meetings at URL_TO_BE_ADDED"
     message = @client.api.account.messages.create(
       :from => @twilio_number,
-      :to => "+4915140510325",
+      :to => ENV['TWILIO_DEMO_ACTIVE'] == "true" ? ENV['TWILIO_DEMO_RECIPIENT'] : @host.phone_number,
       :body => text,
     )
-
   end
-
-
-
-
-
 
 end
 
-
-
-ENV["FB_ID"]
 
