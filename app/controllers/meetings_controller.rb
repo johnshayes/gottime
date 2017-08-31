@@ -1,5 +1,16 @@
 class MeetingsController < ApplicationController
 
+  def show
+    # Url: /listings/:listing_id/meetings/:id(.:format) (path: listing_meeting GET)
+    @meeting = Meeting.find(params[:id])
+    @participants = @meeting.participants
+    @listing = @meeting.listing
+
+    @chat_room = ChatRoom.includes(messages: :user).find_by(meeting_id: params[:id])
+    # Rails.logger.info current_user.attributes
+  end
+
+
   def create
     # Invoked by POST to /listings/:listing_id/meetings (path: listing_meetings)
     @meeting = Meeting.new(meeting_params) # Create new meeting instance w/ meeting params (below - see q?)
@@ -7,20 +18,13 @@ class MeetingsController < ApplicationController
     @meeting.listing = @listing # Makes the connection i.e. sets listing_id onto this new meeting instance
     # To create new particpant instance
     @meeting.participants.build(user: current_user)
+    @meeting.chat_room = ChatRoom.new(name: "#{@listing.id}_chatroom")
 
     if @meeting.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
       redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save
     end
-  end
-
-  def show
-    # Url: /listings/:listing_id/meetings/:id(.:format) (path: listing_meeting GET)
-    @meeting = Meeting.find(params[:id])
-    @participants = @meeting.participants
-    @listing = @meeting.listing
-    # Rails.logger.info current_user.attributes
   end
 
 private

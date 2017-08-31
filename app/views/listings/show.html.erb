@@ -15,8 +15,6 @@ Activity:
 <em> <%= @listing.activity %> </em>
 <br>
 
-<!-- POST to (path: listing_meetings) listings/:listing_id/meetings -->
-
 Join:
 <%= link_to "Create a huddle", listing_meetings_path(listing_id: @listing.id, meeting: {status: nil}), method: :post %>
 
