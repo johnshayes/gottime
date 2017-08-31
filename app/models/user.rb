@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
   has_many :listings
-  has_many :messages
+  has_many :messages, dependent: :destroy
   has_many :participants
   has_many :meetings, through: :listings
   has_many :blacklistings,  class_name:  "Blacklist",
