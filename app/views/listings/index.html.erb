@@ -1,15 +1,22 @@
 <div class="index-wrapper">
 
   <div class="plan-fixed toggled">
+
+    <% if current_user.listings_without_match.size > 1 %>
     <div class="chevron-circle">
       <i class="fa fa-circle chevron-circle-size" aria-hidden="true"></i>
       <div class="chevron-up-down">
         <i id="chevron-identifier" class="fa fa-chevron-up" aria-hidden="true"></i>
       </div>
     </div>
-    <% current_user.listings_without_match.each do |listing| %>
+    <% end %>
+    <% current_user.listings_without_match.each_with_index do |listing, index| %>
     <div class="plan current-user-plan">
-      <%= image_tag current_user.facebook_picture_url.gsub("square","large"), class: "img-cirlce" %>
+      <% if index == 0 %>
+        <%= image_tag current_user.facebook_picture_url.gsub("square","large"), class: "img-cirlce" %>
+      <% else %>
+        <div class="empty-picture"></div>
+      <% end %>
       <div class="plan-info">
         <p class="plan-user"><%= current_user.first_name %></p>
         <p class="plan-emoji"><%= listing.activity %></p>
