@@ -6,11 +6,7 @@
 <li>Placeholder: Listing owner image here</li>
 <li>Listing owner first_name: <%= @listing.user.first_name %></li>
 
-<!--
-Later:
-if @meeting.participants.present?
- <- .first because participants will be an array
--->
+
 <br>
 <li>Placeholder: Participant image here</li>
 <li>Participant first_name: <%= @participants.first.user.first_name %></li>
@@ -20,3 +16,4 @@ if @meeting.participants.present?
 <li>Offered_datetime_text: <%= @listing.offered_datetime_text %></li>
 </ul>
 
+<%= render 'chat_room', chat_room: @chat_room %>

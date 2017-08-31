@@ -1,5 +1,22 @@
 class MeetingsController < ApplicationController
 
+  def show
+    # Url: /listings/:listing_id/meetings/:id(.:format) (path: listing_meeting GET)
+    @meeting = Meeting.find(params[:id])
+    @participants = @meeting.participants
+    @listing = @meeting.listing
+
+    @chat_room = ChatRoom.includes(messages: :user).find_by(meeting_id: params[:id])
+    # Rails.logger.info current_user.attributes
+  end
+
+  # Private index page for current_user
+  def index
+    @meetings = Participant.where(user_id: current_user.id).collect { |p| p.meeting }
+
+  end
+
+
   def create
     # Invoked by POST to /listings/:listing_id/meetings (path: listing_meetings)
     @meeting = Meeting.new(meeting_params) # Create new meeting instance w/ meeting params (below - see q?)
@@ -7,6 +24,7 @@ class MeetingsController < ApplicationController
     @meeting.listing = @listing # Makes the connection i.e. sets listing_id onto this new meeting instance
     # To create new particpant instance
     @meeting.participants.build(user: current_user)
+    @meeting.chat_room = ChatRoom.new(name: "#{@listing.id}_chatroom")
 
     match_notification(@listing) if ENV['TWILIO_SEND'] == "true"
 
@@ -15,21 +33,6 @@ class MeetingsController < ApplicationController
     else
       redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save
     end
-  end
-
-  def show
-    # Url: /listings/:listing_id/meetings/:id(.:format) (path: listing_meeting GET)
-    @meeting = Meeting.find(params[:id])
-    @participants = @meeting.participants
-    @listing = @meeting.listing
-    # Rails.logger.info current_user.attributes
-  end
-
-
-  # Private index page for current_user
-  def index
-    @meetings = Participant.where(user_id: current_user.id).collect { |p| p.meeting }
-
   end
 
 private
