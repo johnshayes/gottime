@@ -5,11 +5,11 @@ class ListingsController < ApplicationController
       friend["id"]
     end
     users = User.where(uid: uids).pluck(:id)
-    # @listings = Listing.where.not(user_id: current_user.id).where(user_id: users)
+    @listings = Listing.where.not(user_id: current_user.id).where(user_id: users)
 
 
     # Necessary for seeds to work with front-end on local machine
-    @listings = Listing.all.where.not(user_id: current_user.id)
+    # @listings = Listing.all.where.not(user_id: current_user.id)
   end
 
   def show
