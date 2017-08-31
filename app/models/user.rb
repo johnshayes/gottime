@@ -8,6 +8,15 @@ class User < ApplicationRecord
   has_many :messages, dependent: :destroy
   has_many :participants
   has_many :meetings, through: :listings
+  has_many :blacklistings,  class_name:  "Blacklist",
+                            foreign_key: "user_id",
+                            dependent:   :destroy
+  has_many :blacklisted,  class_name:  "Blacklist",
+                          foreign_key: "friend_id",
+                          dependent:   :destroy
+  has_many :blacklisted_friends, through: :blacklistings,  source: :friend
+  has_many :blacklisting_friends, through: :blacklisted,  source: :user
+
 
   def self.find_for_facebook_oauth(auth)
     user_params = auth.slice(:provider, :uid)

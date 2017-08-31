@@ -1,10 +1,23 @@
 class ListingsController < ApplicationController
   def index
+    me = current_user
+    # extracting Blacklist contraints
+    blacklist_me = Blacklist.where(friend_id: me.id)
+    blacklist_me_ids = blacklist_me.map do |blacklist|
+      blacklist["user_id"]
+    end
+
+    blacklist_others = Blacklist.where(user_id: me.id)
+    blacklist_others_ids = blacklist_others.map do |blacklist|
+      blacklist["friend_id"]
+    end
+    # extracting Facebook friends
     user_friends = FacebookApiService.new(current_user.token).friends
     uids = user_friends.map do |friend|
       friend["id"]
     end
-    users = User.where(uid: uids).pluck(:id)
+
+    users = User.where.not(id: blacklist_others_ids).where.not(id: blacklist_me_ids).where(uid: uids).pluck(:id)
     listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users)
     listings_local = Listing.all.where.not(user_id: current_user.id)
     @listings = listings_fb + listings_local
