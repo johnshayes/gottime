@@ -1,6 +1,13 @@
 class ListingsController < ApplicationController
   def index
-    @listings = Listing.all.where.not(user_id: current_user.id)
+    user_friends = FacebookApiService.new(current_user.token).friends
+    uids = user_friends.map do |friend|
+      friend["id"]
+    end
+    users = User.where(uid: uids).pluck(:id)
+    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users)
+    listings_local = Listing.all.where.not(user_id: current_user.id)
+    @listings = listings_fb + listings_local
   end
 
   def show
@@ -29,6 +36,12 @@ class ListingsController < ApplicationController
 
     @listing.save
 
+    redirect_to listings_path
+  end
+
+  def destroy
+    @listing = Listing.find(params[:id])
+    @listing.destroy
     redirect_to listings_path
   end
 

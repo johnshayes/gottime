@@ -2,7 +2,7 @@
   <div class="plan-sticky">
     <% current_user.listings_without_match.each do |listing| %>
     <div class="plan current-user-plan">
-      <%= image_tag current_user.facebook_picture_url, class: "img-cirlce" %>
+      <%= image_tag current_user.facebook_picture_url.gsub("square","large"), class: "img-cirlce" %>
       <div class="plan-info">
         <p class="plan-user"><%= current_user.first_name %></p>
         <p class="plan-emoji"><%= listing.activity %></p>
@@ -18,7 +18,11 @@
   <% @listings.each do |listing| %>
 
   <div class="plan">
+    <% if listing.photo_exist? %>
     <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
+    <% else %>
+    <%= image_tag listing.user.facebook_picture_url.gsub("square","large") %>
+    <% end %>
     <div class="plan-info">
       <p class="plan-user"><%= listing.user.first_name %></p>
       <p class="plan-emoji"><%= listing.activity %></p>
