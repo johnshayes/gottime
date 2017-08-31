@@ -12,7 +12,7 @@ class ListingsController < ApplicationController
       blacklist["friend_id"]
     end
     # extracting Facebook friends
-      user_friends = FacebookApiService.new(current_user.token).friends
+    user_friends = FacebookApiService.new(current_user.token).friends
     uids = user_friends.map do |friend|
       friend["id"]
     end

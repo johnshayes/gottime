@@ -1,1 +1,8 @@
-@user.name
+<h1><%= "Hi " + @user.first_name %></h1>
+
+<% @user_friends.each do |friend| %>
+  <p><%= friend["name"] %></p>
+
+  <%= link_to "Blacklist", blacklists_path(friend_id: friend["id"]), method: :post  %>
+<% end %>
+
