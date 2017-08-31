@@ -12,4 +12,8 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+
+  def show
+    @user = current_user
+  end
 end
