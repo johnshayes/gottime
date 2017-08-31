@@ -1,3 +1,7 @@
+.index-wrapper{
+  padding-top: 50px;
+  padding-bottom: 65px;
+}
 .plan {
   display: flex;
   align-items: center;
@@ -25,8 +29,12 @@
   }
   img {
     width: 50px;
+    height: 50px;
     border-radius: 50%;
     border: 0.5px solid white;
+  }
+  .empty-picture {
+    width: 50px;
   }
   p {
     margin: 0;
@@ -42,13 +50,42 @@
 }
 
 .current-user-plan {
-  background-color: #DA3E52;
+  background-color: white;
   .plan-info {
     height: 65px;
   }
 }
 
-.plan-sticky {
-  position: sticky;
-  top: 0px;
+.plan-fixed {
+  transition: top 2s ease;
+  position: fixed;
+  bottom: 0px;
+  width: 100%;
+}
+
+.chevron-up-down {
+  position: absolute;
+  font-size: 20px;
+  color: white;
+  margin-top: -1px;
+}
+
+.chevron-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  margin-top: -17.5px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  color: #DA3E52;
+  .chevron-circle-size {
+    font-size: 36px;
+    }
+}
+
+
+.plan-fixed.toggled {
+  top: calc(100vh - 65px);
 }

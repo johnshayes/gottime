@@ -22,6 +22,7 @@ gem 'sass-rails'
 gem 'simple_form'
 gem 'uglifier'
 gem "jquery-slick-rails"
+gem 'twilio-ruby', '~> 5.2.0'
 
 group :development, :test do
   gem 'pry-byebug'

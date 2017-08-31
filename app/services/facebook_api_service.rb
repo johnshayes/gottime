@@ -1,6 +1,6 @@
 require 'koala'
 
-class FacebookApi
+class FacebookApiService
 
   def initialize(token)
     @token = token

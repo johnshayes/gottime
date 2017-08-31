@@ -7,9 +7,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :listings, only: [ :index, :show, :new, :create ] do
+  resources :listings, only: [ :index, :show, :new, :create, :destroy ] do
     resources :meetings, only: [ :create, :show ]
   end
+
+  resources :meetings, only: [ :index ]
+
+  post 'twilio/voice' => 'twilio#voice'
 
   resources :chat_rooms, only: [ :show ] do
     resources :messages, only: [ :create ]
