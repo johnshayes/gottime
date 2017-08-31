@@ -55,20 +55,11 @@ private
     text = "Hi #{@guest.first_name}, you and #{@host.first_name} are meeting #{@offered_datetime_text} for #{@activity}! Manage your meetings at URL_TO_BE_ADDED"
     message = @client.api.account.messages.create(
       :from => @twilio_number,
-      :to => @host.phone_number == nil ? ENV['TWILIO_DEMO_RECIPIENT'] : @host.phone_number,
+      :to => ENV['TWILIO_DEMO_ACTIVE'] == "true" ? ENV['TWILIO_DEMO_RECIPIENT'] : @host.phone_number,
       :body => text,
     )
-
   end
-
-
-
-
-
 
 end
 
-
-
-ENV["FB_ID"]
 
