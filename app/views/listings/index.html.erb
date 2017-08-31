@@ -1,5 +1,12 @@
 <div class="index-wrapper">
-  <div class="plan-sticky">
+
+  <div class="plan-fixed toggled">
+    <div class="chevron-circle">
+      <i class="fa fa-circle chevron-circle-size" aria-hidden="true"></i>
+      <div class="chevron-up-down">
+        <i id="chevron-identifier" class="fa fa-chevron-up" aria-hidden="true"></i>
+      </div>
+    </div>
     <% current_user.listings_without_match.each do |listing| %>
     <div class="plan current-user-plan">
       <%= image_tag current_user.facebook_picture_url.gsub("square","large"), class: "img-cirlce" %>
