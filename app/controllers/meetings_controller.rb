@@ -8,6 +8,8 @@ class MeetingsController < ApplicationController
     # To create new particpant instance
     @meeting.participants.build(user: current_user)
 
+    match_notification(@listing) if ENV['TWILIO_SEND'] == "true"
+
     if @meeting.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
@@ -23,11 +25,47 @@ class MeetingsController < ApplicationController
     # Rails.logger.info current_user.attributes
   end
 
+
+  # Private index page for current_user
+  def index
+    @meetings = Participant.where(user_id: current_user.id).collect { |p| p.meeting }
+
+  end
+
 private
   def meeting_params
     params.require(:meeting).permit(:status) # What does :meeting refer to?
   end
+
+
+ def match_notification(listing)
+
+    @activity = listing.activity
+    @host_name = User.find(listing.user_id).first_name
+    @offered_datetime_text = listing.offered_datetime_text
+
+    @your_name = current_user.first_name
+
+    @twilio_number = ENV['TWILIO_NUMBER']
+    account_sid = ENV['TWILIO_ACCOUNT_SID']
+    @client = Twilio::REST::Client.new account_sid, ENV['TWILIO_AUTH_TOKEN']
+    text = "Hi #{@your_name}, you and #{@host_name} are meeting #{@offered_datetime_text} for #{@activity}! Manage your meetings at URL_TO_BE_ADDED"
+    message = @client.api.account.messages.create(
+      :from => @twilio_number,
+      :to => "+4915140510325",
+      :body => text,
+    )
+
+  end
+
+
+
+
+
+
 end
 
 
+
+ENV["FB_ID"]
 
