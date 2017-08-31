@@ -23,7 +23,7 @@ Join:
 <% end %>
 
 <% if @listing.owns_listing?(current_user) %>
-<%= link_to "Delete a huddle ", listings_path, method: :delete %>
+<%= link_to "Delete a huddle", listing_path(@listing), method: :delete %>
 <% end %>
 <br>
 <br>

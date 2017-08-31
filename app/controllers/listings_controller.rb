@@ -1,11 +1,15 @@
 class ListingsController < ApplicationController
   def index
-    user_friends = FacebookApi.new(current_user.token).friends
+    user_friends = FacebookApiService.new(current_user.token).friends
     uids = user_friends.map do |friend|
       friend["id"]
     end
     users = User.where(uid: uids).pluck(:id)
-    @listings = Listing.where.not(user_id: current_user.id).where(user_id: users)
+    # @listings = Listing.where.not(user_id: current_user.id).where(user_id: users)
+
+
+    # Necessary for seeds to work with front-end on local machine
+    @listings = Listing.all.where.not(user_id: current_user.id)
   end
 
   def show
@@ -40,6 +44,7 @@ class ListingsController < ApplicationController
   def destroy
     @listing = Listing.find(params[:id])
     @listing.destroy
+    redirect_to listings_path
   end
 
   def listing_params
