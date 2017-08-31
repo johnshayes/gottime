@@ -8,14 +8,13 @@ class MeetingsController < ApplicationController
     # To create new particpant instance
     @meeting.participants.build(user: current_user)
 
-    match_message(@listing)
+    match_notification(@listing) if ENV['TWILIO_SEND'] == "true"
 
     if @meeting.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
       redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save
     end
-
   end
 
   def show
@@ -39,11 +38,11 @@ private
   end
 
 
- def match_message(listing)
+ def match_notification(listing)
+
     @activity = listing.activity
     @host_name = User.find(listing.user_id).first_name
     @offered_datetime_text = listing.offered_datetime_text
-
 
     @your_name = current_user.first_name
 
@@ -56,6 +55,7 @@ private
       :to => "+4915140510325",
       :body => text,
     )
+
   end
 
 
