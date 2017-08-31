@@ -18,10 +18,12 @@ Activity:
 <!-- POST to (path: listing_meetings) listings/:listing_id/meetings -->
 
 Join:
+<% unless @listing.owns_listing?(current_user) %>
 <%= link_to "Create a huddle", listing_meetings_path(listing_id: @listing.id, meeting: {status: nil}), method: :post %>
+<% end %>
 
-<%= if current_user.owns? listing %>
+<% if @listing.owns_listing?(current_user) %>
 <%= link_to "Delete a huddle ", listings_path, method: :delete %>
-<%= end %>
+<% end %>
 <br>
 <br>
