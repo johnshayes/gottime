@@ -2,7 +2,7 @@
   <div class="plan-card-fixed">
     <div class="plan-card-flex">
       <% current_user.listings_without_match.each_with_index do |listing, index| %>
-      <%= link_to listing_path(listing) do  %>
+      <div id="<%= listing.id %>" class="plan">
       <div class="plan-card current-user-plan-card">
 
         <div class="plan-card-info">
@@ -12,7 +12,7 @@
           <p class="plan-card-datetime"><%= listing.offered_datetime_text %></p>
         </div>
       </div>
-      <% end %>
+      </div>
       <% end %>
     </div>
   </div>
