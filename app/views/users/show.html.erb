@@ -2,7 +2,7 @@
 
 <% @user_friends.each do |friend| %>
   <p><%= friend["name"] %></p>
+  <p> <%= friend["id"] %></p>
 
-  <%= link_to "Blacklist", blacklists_path(friend_id: friend["id"]), method: :post  %>
 <% end %>
 
