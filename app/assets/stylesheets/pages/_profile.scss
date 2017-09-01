@@ -1,0 +1,50 @@
+.friends_card {
+  border-bottom: 1px solid gray;
+  padding: 30px;
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  // position: relativ;
+  height: 13vh;
+  a {
+  color: gray;
+  }
+}
+
+.profile_headding {
+  margin-left: 28px;
+  margin-top: 20px;
+}
+.blacklisted {
+  background-color: gray;
+  opacity: 0.5;
+  a {
+    color: white;
+  }
+}
+
+.friends_name {
+  margin: 0px;
+  // position: absolute;
+  // left: 100px;
+}
+
+.blacklist_button {
+  margin: 0px;
+  // position: absolute;
+  // right: 30px;
+}
+
+.profile_background {
+  margin-top: 51px;
+  width: 100vw;
+  height: 100vh;
+  background-color: white;
+  padding-top: 5px;
+}
+
+.friend_photo {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+}
