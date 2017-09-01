@@ -9,19 +9,23 @@
   <% blacklist = Blacklist.where(user_id: @user.id).where(friend_id: facebook_friend_id).first %>
 
   <div class="friends_card <%= "blacklisted" if blacklist  %>">
-    <div class="friend_photo_wrapper">
-      <%= image_tag facebook_friend.facebook_picture_url.gsub("square","large"), class: "friend_photo" %>
-    </div>
-    <div class="friends_name">
-      <p><%= friend["name"] %></p>
-    </div>
-
-    <div class="blacklist_button">
-      <%= link_to "Blacklist", blacklists_path(friend_id: facebook_friend_id), method: :post unless blacklist  %>
+    <div class="col-xs-3">
+      <div class="friend_photo_wrapper">
+        <%= image_tag facebook_friend.facebook_picture_url.gsub("square","large"), class: "friend_photo" %>
+      </div>
     </div>
 
-    <div class="blacklist_button">
-      <%= link_to "Whitelist", blacklist_path(blacklist.id), method: :delete if blacklist %>
+    <div class="col-xs-6">
+      <div class="friends_name">
+        <p><%= friend["name"] %></p>
+      </div>
+    </div>
+    <div class="col-xs-3">
+      <div class="blacklist_button">
+        <%= link_to "Blacklist", blacklists_path(friend_id: facebook_friend_id), method: :post unless blacklist  %>
+
+        <%= link_to "Whitelist", blacklist_path(blacklist.id), method: :delete if blacklist %>
+      </div>
     </div>
   </div>
   <% end %>
