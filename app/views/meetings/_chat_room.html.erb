@@ -10,12 +10,7 @@
           <% end %>
         </div>
       <% end %>
-      <div id="create-message">
-        <%= simple_form_for [ chat_room, Message.new ], remote: true do |f| %>
-          <%= f.input :text, label: false %>
-          <%#= f.submit %>
-        <% end %>
-      </div>
+      <%= render partial: "messages/form", locals: { chat_room: chat_room, message: Message.new } %>
     </div>
   </div>
 </div>
