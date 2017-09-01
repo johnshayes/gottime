@@ -1,6 +1,11 @@
 <br>
 <br>
+<br>
+<br>
+
 <div class="container form">
+<%= link_to raw('<i class="pull-right btn btn-link fa fa-times-circle"></i>'), listings_path %>
+
   <%= simple_form_for(@listing) do |f| %>
     <%= f.error_notification %>
 
@@ -39,7 +44,7 @@
 
 
 
-    <%= f.button :submit %>
+    <%= f.button :submit, "Go!" %>
   <% end %>
 
 
