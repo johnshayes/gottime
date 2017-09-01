@@ -4,17 +4,16 @@
   <br>
 
   <ul>
-  <%= image_tag @host_picture, id: "host_picture" %>
-  <li>Listing owner first_name: <%= @listing.user.first_name %></li>
-
+  <%= image_tag @host_picture, id: "host_picture", class: "avatar" %>
+  <li><%= @listing.user.first_name %></li>
 
   <br>
-  <%= image_tag @participant_picture, id: "participant_picture" %>
-  <li>Participant first_name: <%= @participants.first.user.first_name %></li>
+  <%= image_tag @participant_picture, id: "participant_picture", class: "avatar"%>
+  <li><%= @participants.first.user.first_name %></li>
 
   <br>
   <li>Activity: <%= @meeting.listing.activity %></li>
-  <li>Offered_datetime_text: <%= @listing.offered_datetime_text %></li>
+  <li>Huddle time: <%= @listing.offered_datetime_text %></li>
   </ul>
 
   <%= render 'chat_room', chat_room: @chat_room %>
