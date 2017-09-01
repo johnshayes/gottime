@@ -1,27 +1,34 @@
 
 
+<div class="index-wrapper">
 
 
 
-Datetime_text:
-<em> <%= @listing.offered_datetime_text %></em>
-<br>
 
-Datetime:
-<em> <%= @listing.offered_datetime %> </em>
-<br>
+  Datetime_text:
+  <em> <%= @listing.offered_datetime_text %></em>
+  <br>
 
-Activity:
-<em> <%= @listing.activity %> </em>
-<br>
+  Datetime:
+  <em> <%= @listing.offered_datetime %> </em>
+  <br>
 
-Join:
-<% unless @listing.owns_listing?(current_user) %>
-<%= link_to "Create a huddle", listing_meetings_path(listing_id: @listing.id, meeting: {status: nil}), method: :post %>
-<% end %>
+  Activity:
+  <em> <%= @listing.activity %> </em>
+  <br>
 
-<% if @listing.owns_listing?(current_user) %>
-<%= link_to "Delete a huddle", listing_path(@listing), method: :delete %>
-<% end %>
-<br>
-<br>
+  Join:
+  <% unless @listing.owns_listing?(current_user) %>
+  <%= link_to "Create a huddle", listing_meetings_path(listing_id: @listing.id, meeting: {status: nil}), method: :post %>
+  <% end %>
+
+  <% if @listing.owns_listing?(current_user) %>
+  <%= link_to "Delete a huddle", listing_path(@listing), method: :delete %>
+  <% end %>
+  <br>
+  <br>
+</div>
+
+
+
+</div>
