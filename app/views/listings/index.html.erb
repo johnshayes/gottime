@@ -1,5 +1,4 @@
 <div class="index-wrapper">
-
   <div class="plan-card-fixed">
     <div class="plan-card-flex">
       <% current_user.listings_without_match.each_with_index do |listing, index| %>
@@ -18,24 +17,44 @@
     </div>
   </div>
 
-  <% @listings.each do |listing| %>
+  <div id="plan-listings" class="plan-listings">
+    <% @listings.each do |listing| %>
 
-  <div class="plan">
-    <% if listing.photo_exist? %>
-    <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
-    <% else %>
-    <%= image_tag listing.user.facebook_picture_url.gsub("square","large") %>
-    <% end %>
-    <div class="plan-info">
-      <p class="plan-user"><%= listing.user.first_name %></p>
-      <p class="plan-emoji"><%= listing.activity %></p>
-      <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-      <%= link_to listing_path(listing) do  %>
-      <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+    <div id="<%= listing.id %>" class="plan">
+      <% if listing.photo_exist? %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
+      <% else %>
+      <%= image_tag listing.user.facebook_picture_url.gsub("square","large") %>
       <% end %>
+      <div class="plan-info">
+        <p class="plan-user"><%= listing.user.first_name %></p>
+        <p class="plan-emoji"><%= listing.activity %></p>
+        <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+        <%= link_to listing_path(listing) do  %>
+        <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+        <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
 
-  <% end %>
+  <div id="render-plan">
+  </div>
 </div>
+
+<%= content_for :after_js do %>
+<script>
+  $(".plan").on("click", function(e){
+    var listing_id = $(this).attr("id");
+    $.ajax({
+      type: "GET",
+      url: "/listings/" + listing_id,
+      contentType: 'application/json',
+      dataType: 'script'
+    });
+  });
+</script>
+<% end %>
+
+
 
