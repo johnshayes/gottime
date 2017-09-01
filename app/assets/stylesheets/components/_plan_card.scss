@@ -1,0 +1,56 @@
+.plan-card-fixed {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  background: white
+
+}
+
+.plan-card-flex {
+  display: flex;
+  justify-content: space-around;
+  a:link {
+    color: black;
+    text-decoration: none;
+  }
+  a:visited {
+    color: black;
+    text-decoration: none;
+  }
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  a:active {
+    color: black;
+    text-decoration: none;
+  }
+}
+
+.plan-card-info {
+  margin: 15px 10px 5px 10px;
+  width: 95px;
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.plan-card-emoji-round {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+
+.plan-card-emoji {
+  font-size: 30px;
+  margin: 0
+}
+.plan-card-datetime{
+}
+
+.current-user-plan-card {
+  background-color: white;
+}
