@@ -1,32 +1,21 @@
 <div class="index-wrapper">
 
-  <div class="plan-fixed toggled">
+  <div class="plan-card-fixed">
+    <div class="plan-card-flex">
+      <% current_user.listings_without_match.each_with_index do |listing, index| %>
+      <%= link_to listing_path(listing) do  %>
+      <div class="plan-card current-user-plan-card">
 
-    <% if current_user.listings_without_match.size > 1 %>
-    <div class="chevron-circle">
-      <i class="fa fa-circle chevron-circle-size" aria-hidden="true"></i>
-      <div class="chevron-up-down">
-        <i id="chevron-identifier" class="fa fa-chevron-up" aria-hidden="true"></i>
+        <div class="plan-card-info">
+          <div class="plan-card-emoji-round">
+            <p class="plan-card-emoji"><%= listing.activity %></p>
+          </div>
+          <p class="plan-card-datetime"><%= listing.offered_datetime_text %></p>
+        </div>
       </div>
-    </div>
-    <% end %>
-    <% current_user.listings_without_match.each_with_index do |listing, index| %>
-    <div class="plan current-user-plan">
-      <% if index == 0 %>
-        <%= image_tag current_user.facebook_picture_url.gsub("square","large"), class: "img-cirlce" %>
-      <% else %>
-        <div class="empty-picture"></div>
       <% end %>
-      <div class="plan-info">
-        <p class="plan-user"><%= current_user.first_name %></p>
-        <p class="plan-emoji"><%= listing.activity %></p>
-        <p class="plan-datetime"><%= listing.offered_datetime_text %></p>
-        <%= link_to listing_path(listing) do  %>
-        <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
-        <% end %>
-      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
 
   <% @listings.each do |listing| %>
