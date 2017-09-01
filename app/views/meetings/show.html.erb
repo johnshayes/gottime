@@ -1,21 +1,25 @@
 
-<div class="body-wrapper">
-  <h2>Yaye, a match! Have fun!</h2>
-  <br>
-
-  <ul>
-  <%= image_tag @host_picture, id: "host_picture" %>
-  <li>Listing owner first_name: <%= @listing.user.first_name %></li>
-
+<div class="match-body-wrapper">
+  <h2 class="text-center">Yay, a match!</h2>
 
   <br>
-  <%= image_tag @participant_picture, id: "participant_picture" %>
-  <li>Participant first_name: <%= @participants.first.user.first_name %></li>
+  <div class="match-info">
+    <%= image_tag @host_picture, id: "host_picture", class: "avatar-lg" %>
+    <!-- <li><%= @listing.user.first_name %></li> -->
+    <%= image_tag @participant_picture, id: "participant_picture", class: "avatar-lg"%>
+    <!--   <li><%= @participants.first.user.first_name %></li> -->
+  </div>
 
   <br>
-  <li>Activity: <%= @meeting.listing.activity %></li>
-  <li>Offered_datetime_text: <%= @listing.offered_datetime_text %></li>
-  </ul>
+
+  <div class="match-summary ">
+    <div class="match-emoji">
+      <%= @meeting.listing.activity %>
+    </div>
+    <div class="match-timetext">
+      <%= @listing.offered_datetime_text %>
+    </div>
+  </div>
 
   <%= render 'chat_room', chat_room: @chat_room %>
 

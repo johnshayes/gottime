@@ -9,8 +9,8 @@ class MeetingsController < ApplicationController
     @chat_room = ChatRoom.includes(messages: :user).find_by(meeting_id: params[:id])
     # Rails.logger.info current_user.attributes
 
-    @host_picture = current_user.try(:facebook_picture_url).to_s.gsub("square", "large")
-    @participant_picture = @meeting.participants.first.try(:facebook_picture_url).to_s.gsub("square", "large")
+    @host_picture = @listing.user.try(:facebook_picture_url).to_s.gsub("square", "large")
+    @participant_picture = @meeting.participants.first.user.try(:facebook_picture_url).to_s.gsub("square", "large")
   end
 
   # Private index page for current_user
