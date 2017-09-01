@@ -1,0 +1,37 @@
+<div id="plan-detail" class="hidden">
+  <div class="body-wrapper">
+    <div class="show-card-position">
+
+      <div class="show-card">
+        <div class="show-card-user">
+        <% if listing.photo_exist? %>
+          <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "show-card-image" %>
+          <% else %>
+          <%= image_tag listing.user.facebook_picture_url.gsub("square","large"), class: "show-card-image" %>
+          <% end %>
+        </div>
+        <div class="show-card-info">
+          <div class="show-card-time">
+            <p>When</p>
+            <em> <%= listing.offered_datetime_text %></em>
+          </div>
+
+          <div class="show-card-activity">
+            <p>What</p>
+            <em> <%= listing.activity %> </em>
+          </div>
+        </div>
+        <div class="show-card-link">
+          <% unless listing.owns_listing?(current_user) %>
+          <%= button_to "Create a huddle", listing_meetings_path(listing_id: listing.id, meeting: {status: nil}), method: :post, class: "show-card-button" %>
+          <% end %>
+
+          <% if listing.owns_listing?(current_user) %>
+          <%= button_to "Delete a huddle", listing_path(listing), method: :delete, class: "show-card-button" %>
+          <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

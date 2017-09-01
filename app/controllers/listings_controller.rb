@@ -24,8 +24,15 @@ class ListingsController < ApplicationController
   end
 
   def show
-
     @listing = Listing.find(params[:id])
+    respond_to do |format|
+      format.js {
+        render :show
+      }
+      format.html {
+        # redirect_to listing_path(@listing)
+      }
+    end
   end
 
   def new
