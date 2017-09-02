@@ -1,6 +1,8 @@
 <div class="profile_background">
   <div class="profile_headding">
     <h1><%= "Hi " + @user.first_name %></h1>
+    <h3><%= "Manage which friends can contact and see you!" %></h3>
+    <p><%= "If you blacklist a friend, you won't see any of his postings and your friend won't see any of yours anymore. But don't worry, your friend will not know that you blacklisted him or her!" %></p>
   </div>
   <% @user_friends.each do |friend| %>
   <% facebook_friend = User.find_by(uid: friend["id"]) %>
