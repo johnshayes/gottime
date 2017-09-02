@@ -1,20 +1,65 @@
-.friends_card {
-  border-bottom: 1px solid gray;
-  padding: 30px;
-  align-items: center;
+.profile_background {
+  padding: 10px;
+}
+
+.listing_card {
+  border-bottom: 1px solid #E7E7E6;
+  padding: 17px 15px;
+  align: center center;
   display: flex;
   justify-content: space-between;
   // position: relativ;
-  height: 13vh;
+  // height: 13vh;
   a {
-  color: gray;
+  color: #5D5D5C;
+  }
+  p {
+    color: #5D5D5C;
+    margin-bottom: 0px;
+    // margin-top: 6px;
+  }
+}
+
+.meeting_active {
+  background-color: #F1C800;
+  border-bottom: none;
+  p {
+    color: white;
+  }
+  i {
+    color: white;
+  }
+}
+.friends_card {
+  border-bottom: 1px solid #E7E7E6;
+  padding: 15px;
+  align: center center;
+  display: flex;
+  justify-content: space-between;
+  // position: relativ;
+  // height: 13vh;
+  a {
+    color: #5D5D5C;
+  }
+  p {
+    color: #5D5D5C;
+    margin-bottom: 0px;
+    margin-top: 6px;
   }
 }
 
 .profile_headding {
-  margin-left: 28px;
-  margin-top: 20px;
+  padding: 15px;
+  // margin-top: 20px;
+  padding-bottom: 0px;
+  p {
+    margin-bottom: 0px;
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
 }
+
 .blacklisted {
   background-color: gray;
   opacity: 0.5;
@@ -23,14 +68,16 @@
   }
 }
 
-.friends_name {
-  margin: 0px;
-  // position: absolute;
-  // left: 100px;
-}
+// .friends_name {
+//   margin: 0px;
+//   // position: absolute;
+//   // left: 100px;
+// }
 
 .blacklist_button {
   margin: 0px;
+  margin-bottom: 0px;
+  padding-top: 6px;
   // position: absolute;
   // right: 30px;
 }
@@ -38,7 +85,7 @@
 .profile_background {
   margin-top: 51px;
   width: 100vw;
-  height: 100vh;
+  // height: 100vh;
   background-color: white;
   padding-top: 5px;
 }
