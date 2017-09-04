@@ -5,7 +5,7 @@
 .listing_card {
   border-bottom: 1px solid #E7E7E6;
   padding: 17px 15px;
-  align: center center;
+  align-items: center center;
   display: flex;
   justify-content: space-between;
   // position: relativ;
@@ -20,9 +20,10 @@
   }
 }
 
-.meeting_active {
-  background-color: #F1C800;
-  border-bottom: none;
+.listing_expired {
+  background-color: gray;
+  opacity: 0.5;
+  border-bottom: 1px solid white;
   p {
     color: white;
   }

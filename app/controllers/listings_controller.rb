@@ -19,8 +19,8 @@ class ListingsController < ApplicationController
     end
 
     users = User.where.not(id: blacklist_others_ids).where.not(id: blacklist_me_ids).where(uid: uids).pluck(:id)
-    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users)
-    listings_local = Listing.all.where.not(user_id: current_user.id)
+    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users).where(status: "active")
+    listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "active")
     @listings = listings_fb + listings_local
   end
 
@@ -38,7 +38,10 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    @offered_datetime_text_options = [ "NOW", "+1h", "+2h", "TONIGHT", "NOW", "+1h", "+2h", "TONIGHT"]
+
+    # OPTIONS TO BE EXTRACTED FROM USER PROFILE LATER -- PERSONAL PREFERENCES
+    @offered_datetime_text_options = [ "NOW", "+1h", "+2h", "TONIGHT", "EVENING", "NOON", "MORNING", "+3h", "+4h", "+5h", "+6h", "+7h", "+8h", "+9h", "+10h", "+11h", "+12h"]
+
     @activity_options = [  "🤷", "🍽", "🎉", "💘", "🛒", "🎵", "🍰", "🎤", "🚀", "🚴", "🤡", "💬", "🆙", "🎧", "🥘",
 ]
     respond_to do |format|
@@ -76,16 +79,31 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
+  private
+
   def listing_params
     params.require(:listing).permit(:activity, :offered_datetime_text)
   end
 
   def what_is_datetime_text?(offered_datetime_text)
     return case offered_datetime_text
-      when "NOW" then DateTime.now
+      when "NOW" then DateTime.now + 30.minutes
       when "+1h" then DateTime.now + 1.hours
       when "+2h" then DateTime.now + 2.hours
-      when "TONIGHT" then DateTime.now.change({ hour: 20 })
+      when "+3h" then DateTime.now + 3.hours
+      when "+4h" then DateTime.now + 4.hours
+      when "+5h" then DateTime.now + 5.hours
+      when "+6h" then DateTime.now + 6.hours
+      when "+7h" then DateTime.now + 7.hours
+      when "+8h" then DateTime.now + 8.hours
+      when "+9h" then DateTime.now + 9.hours
+      when "+10h" then DateTime.now + 10.hours
+      when "+11h" then DateTime.now + 11.hours
+      when "+12h" then DateTime.now + 12.hours
+      when "TONIGHT" then DateTime.now.change({ hour: 22 })
+      when "MORNING" then DateTime.now.change({ hour: 9})
+      when "NOON" then DateTime.now.change({ hour: 12})
+      when "EVENING" then DateTime.now.change({ hour: 18})
     end
   end
 

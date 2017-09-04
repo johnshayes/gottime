@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831132611) do
+ActiveRecord::Schema.define(version: 20170904133403) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,12 +41,13 @@ ActiveRecord::Schema.define(version: 20170831132611) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "offered_datetime_text"
+    t.string "status", default: "open"
     t.index ["user_id"], name: "index_listings_on_user_id"
   end
 
   create_table "meetings", force: :cascade do |t|
     t.bigint "listing_id"
-    t.string "status"
+    t.string "status", default: "active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["listing_id"], name: "index_meetings_on_listing_id"
@@ -100,6 +101,7 @@ ActiveRecord::Schema.define(version: 20170831132611) do
     t.datetime "token_expiry"
     t.string "photo"
     t.json "user_friends"
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
