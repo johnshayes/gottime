@@ -8,4 +8,5 @@ class PagesController < ApplicationController
   def my_listings
 
   end
+
 end

@@ -1,4 +1,9 @@
 <div class="index-wrapper">
+
+<% content_for :navbar_title do %>
+  Add/choose listing
+<% end %>
+
   <div class="plan-card-fixed">
     <div class="plan-card-flex">
       <% current_user.listings_without_match.each_with_index do |listing, index| %>
