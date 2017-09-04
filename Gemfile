@@ -23,6 +23,7 @@ gem 'simple_form'
 gem 'uglifier'
 gem "jquery-slick-rails"
 gem 'twilio-ruby', '~> 5.2.0'
+gem 'fullpage-rails'
 
 group :development, :test do
   gem 'pry-byebug'
