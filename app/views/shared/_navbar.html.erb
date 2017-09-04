@@ -1,13 +1,13 @@
 <div class="navbar-wagon navbar-fixed">
   <!-- Logo -->
   <%= link_to root_path, class: "navbar-wagon-brand" do %>
-  <%= image_tag "logo_white.png" %>
+    <%= image_tag "logo_white.png" %>
   <% end %>
 
 
-<div class="navbar-title">
-  <%= content_for?(:navbar_title) ? yield(:navbar_title) : "Meet friends, be happy!" %>
-</div>
+  <div class="navbar-title">
+    <%= content_for?(:navbar_title) ? yield(:navbar_title) : "Meet friends, be happy!" %>
+  </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
 
