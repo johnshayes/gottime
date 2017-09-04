@@ -2,35 +2,46 @@
   margin-top: 75px;
 }
 
-.avatar-lg {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  flex: 0 0 auto;
-}
-
 .match-info {
   display: flex;
   align-items: center;
-  padding-left: 10px;
-
-  justify-content: space-evenly;
-
+  padding-left: 20px;
+  padding-right: 20px;
+  justify-content: center;
 }
 
-.match-summary {
-  display: flex;
-  align-items: center;
-  padding-left: 10px;
-
-  justify-content: space-evenly;
-
+.avatar-lg {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  flex: 0 0 auto;
+  padding: 0px;
 }
+
+
+// .match-summary {
+//   display: flex;
+//   align-items: center;
+//   padding-left: 10px;
+//   justify-content: center;
+// }
 
 .match-emoji {
-  font-size: 75px;
+  font-size: 50px;
+  padding: 10px;
 }
 
 .match-timetext {
-  font-size: 30px
+  font-size: 25px;
+  padding: 10px;
 }
+
+.chat-header {
+  padding: 0px 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  h4 {
+    margin: 0;
+  }
+}
+
