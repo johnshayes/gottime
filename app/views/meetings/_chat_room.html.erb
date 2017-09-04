@@ -1,7 +1,7 @@
 
-<div class="container">
-  <div class="row">
-    <div class="col-sm-6 col-sm-offset-3">
+<div class="chat-messages">
+<!--   <div class="row"> -->
+<!--     <div class="col-sm-6 col-sm-offset-3"> -->
       <% if chat_room.messages %>
 <!--         <div class="messages"> -->
           <% chat_room.messages.each do |message| %>
@@ -9,9 +9,12 @@
           <% end %>
         <!-- </div> -->
       <% end %>
-      <%= render partial: "messages/form", locals: { chat_room: chat_room, message: Message.new } %>
-    </div>
+
+  <div class="new-message">
+    <%= render partial: "messages/form", locals: { chat_room: chat_room, message: Message.new } %>
   </div>
+<!--     </div> -->
+<!--   </div> -->
 </div>
 
 <% content_for :after_js do %>

@@ -1,3 +1,6 @@
+.chat-messages{
+  margin: 0 40px;
+
 .messages {
   font-size: 14px;
   color: #868686;
@@ -12,6 +15,7 @@
 
 .message {
   display: flex;
+  // flex-direction: column;
   margin-bottom: 10px;
   &.right {
     flex-direction: row-reverse;
@@ -20,6 +24,7 @@
     }
   }
 }
+
 .message-content {
   background-color: #F7F7F7;
   border-radius: 3px;
@@ -28,8 +33,15 @@
 }
 
 .message-text {
-
+  // flex-direction: column;
+  // justify-content: center;
+  // resize: vertical;
+  // overflow: auto;
+  padding-top: 8px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
+
 .avatar {
   width: 42px;
   height: 42px;
@@ -56,4 +68,5 @@ input.form-control {
     border: 1px solid blue;
     box-shadow: none;
   }
+}
 }
