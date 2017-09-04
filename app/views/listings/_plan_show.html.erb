@@ -1,10 +1,11 @@
-<div id="plan-detail" class="hidden">
+<div id="plan-detail">
   <div class="body-wrapper">
     <div class="show-card-position">
 
       <div class="show-card">
+        <%= link_to raw('<i class="pull-right btn btn-link fa fa-times-circle"></i>'), listings_path %>
         <div class="show-card-user">
-        <% if listing.photo_exist? %>
+          <% if listing.photo_exist? %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "show-card-image" %>
           <% else %>
           <%= image_tag listing.user.facebook_picture_url.gsub("square","large"), class: "show-card-image" %>
