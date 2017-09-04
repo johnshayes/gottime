@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+
   def index
     me = current_user
     # extracting Blacklist contraints
@@ -37,10 +38,19 @@ class ListingsController < ApplicationController
 
   def new
     @listing = Listing.new
-    # OPTIONS TO BE EXTRACTED FROM USER PROFILE LATER -- PERSONAL PREFERENCES
     @offered_datetime_text_options = [ "NOW", "+1h", "+2h", "TONIGHT", "NOW", "+1h", "+2h", "TONIGHT"]
     @activity_options = [  "🤷", "🍽", "🎉", "💘", "🛒", "🎵", "🍰", "🎤", "🚀", "🚴", "🤡", "💬", "🆙", "🎧", "🥘",
 ]
+    respond_to do |format|
+      format.js {
+        render :new
+      }
+      format.html {
+        render :new
+        # redirect_to listing_path(@listing)
+      }
+    end
+    # OPTIONS TO BE EXTRACTED FROM USER PROFILE LATER -- PERSONAL PREFERENCES
   end
 
   def create

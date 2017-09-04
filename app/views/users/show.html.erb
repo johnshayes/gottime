@@ -1,4 +1,9 @@
 <div class="profile_background">
+
+<% content_for :navbar_title do %>
+  Manage profile
+<% end %>
+
   <div class="profile_headding">
     <h1><%= "Hi " + @user.first_name %></h1>
     <p><strong><%=  "See all your listings and their status!" %></strong></p>

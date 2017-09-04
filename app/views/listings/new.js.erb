@@ -1,0 +1,6 @@
+$("#plan-listings").fadeOut();
+$("#render-add-plan").html("<%= j render "new_plan", listing: @listing, offered_datetime_text_options: @offered_datetime_text_options, activity_options: @activity_options, script: true %>");
+$("#render-add-plan").removeClass("hidden");
+// $("#add-plan").fadeIn();
+// $("#add-plan").addClass("magictime spaceInDown");
+
