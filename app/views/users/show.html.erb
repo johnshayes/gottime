@@ -7,7 +7,9 @@
   <% @listings.each do |listing| %>
     <% meeting = Meeting.where(listing_id: listing.id) %>
     <% participant = Participant.where(meeting_id: meeting.ids) %>
-    <div class="listing_card <%= "meeting_active" if participant.length >= 2  %>">
+    <%# i_participated = Participant.where(user_id: @user.id) %>
+    <%# meeting << Meeting.where(id: i_participated.ids) %>
+    <div class="listing_card <%= "meeting_active" if participant.length >= 2 && meeting.status == "active" %>">
       <p class="plan-emoji"><%= listing.activity %></p>
       <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
       <%= link_to listing_path(listing) do  %>

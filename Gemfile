@@ -14,6 +14,9 @@ gem 'omniauth-facebook'
 gem 'simple_form'
 gem 'koala', '~> 2.4'
 
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'
 gem 'font-awesome-sass'

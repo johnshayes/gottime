@@ -23,7 +23,7 @@
         </div>
         <div class="show-card-link">
           <% unless listing.owns_listing?(current_user) %>
-          <%= button_to "Create a huddle", listing_meetings_path(listing_id: listing.id, meeting: {status: nil}), method: :post, class: "show-card-button" %>
+          <%= button_to "Create a huddle", listing_meetings_path(listing_id: listing.id, meeting: {status: "active"}), method: :post, class: "show-card-button" %>
           <% end %>
 
           <% if listing.owns_listing?(current_user) %>
