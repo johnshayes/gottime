@@ -1,3 +1,5 @@
+require 'sidekiq-scheduler'
+
 class ChangeMeetingsStatusJob < ApplicationJob
   queue_as :default
 
@@ -8,6 +10,7 @@ class ChangeMeetingsStatusJob < ApplicationJob
       expiration_time = meeting.created_at + 5.hours
       if current_time > expiration_time
         meeting.status = "inactive"
+        meeting.save
       end
     end
   end

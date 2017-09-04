@@ -32,6 +32,8 @@ class MeetingsController < ApplicationController
     match_notification(@listing) if ENV['TWILIO_SEND'] == "true"
 
     if @meeting.save
+      @listing.status = "in use"
+      @listing.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
       redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save

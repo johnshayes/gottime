@@ -6,15 +6,30 @@
 
   <div class="profile_headding">
     <h1><%= "Hi " + @user.first_name %></h1>
+    <p><strong><%=  "Your currently active huddle:" %></strong></p>
+  </div>
+  <% @listings_participation.each do |listing| %>
+
+    <div class="listing_card">
+      <p class="plan-emoji"><%= listing.activity %></p>
+      <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+      <%= link_to listing_path(listing) do  %>
+      <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+      <% end %>
+    </div>
+  <% end %>
+
+
+  <div class="profile_headding">
     <p><strong><%=  "See all your listings and their status!" %></strong></p>
   </div>
 
   <% @listings.each do |listing| %>
-    <% meeting = Meeting.where(listing_id: listing.id) %>
-    <% participant = Participant.where(meeting_id: meeting.ids) %>
+    <% meeting = Meeting.where(listing_id: listing.id).first %>
+    <% participant = Participant.where(meeting_id: meeting.id) if meeting %>
     <%# i_participated = Participant.where(user_id: @user.id) %>
     <%# meeting << Meeting.where(id: i_participated.ids) %>
-    <div class="listing_card <%= "meeting_active" if participant.length >= 2 && meeting.status == "active" %>">
+    <div class="listing_card <%= "listing_expired" if listing.status == "expired" %>">
       <p class="plan-emoji"><%= listing.activity %></p>
       <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
       <%= link_to listing_path(listing) do  %>

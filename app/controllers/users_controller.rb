@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
     #overview of huddles I participated in
     i_participated = Participant.where(user_id: @user.id)
-    meeting = Meeting.where(id: i_participated.ids)
-    @listings += Listing.where(meeting_id: meeting.ids)
+    meetings = Meeting.where(id: i_participated.ids).where(status: "active")
+    @listings_participation = Listing.where(id: meetings.map(&:listing_id))
   end
 end

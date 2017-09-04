@@ -19,8 +19,8 @@ class ListingsController < ApplicationController
     end
 
     users = User.where.not(id: blacklist_others_ids).where.not(id: blacklist_me_ids).where(uid: uids).pluck(:id)
-    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users)
-    listings_local = Listing.all.where.not(user_id: current_user.id)
+    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users).where(status: "active")
+    listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "active")
     @listings = listings_fb + listings_local
   end
 
@@ -79,31 +79,6 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
-
-  # def expiration
-  #   every 5.minute do
-  #     current_time = Time.now
-  #     listings = Listing.where(status: "in use")
-  #     meetings = Meeting.where(listing_id: listings.ids)
-  #     if meetings.ids?
-  #       meetings.each do |meeting|
-  #         time_difference = current_time - meeting.created_at
-  #         if (time_difference/3600) > 5
-  #           meeting.status = "expiered"
-  #           listings.status = "inactive"
-  #         end
-  #       end
-  #     else
-  #       listings.each do |listing|
-  #         time_difference = current_time - listing.created_at
-  #         if (time_difference/3600) > 5 || current_time < listing.offered_datetime
-  #           listing.status = "inactive"
-  #         end
-  #       end
-  #     end
-  #   end
-  # end
-
   private
 
   def listing_params
@@ -112,7 +87,7 @@ class ListingsController < ApplicationController
 
   def what_is_datetime_text?(offered_datetime_text)
     return case offered_datetime_text
-      when "NOW" then DateTime.now
+      when "NOW" then DateTime.now + 30.minutes
       when "+1h" then DateTime.now + 1.hours
       when "+2h" then DateTime.now + 2.hours
       when "+3h" then DateTime.now + 3.hours
