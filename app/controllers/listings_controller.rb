@@ -31,7 +31,7 @@ class ListingsController < ApplicationController
         render :show
       }
       format.html {
-        # redirect_to listing_path(@listing)
+        render :show
       }
     end
   end
