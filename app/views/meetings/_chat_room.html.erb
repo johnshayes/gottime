@@ -2,13 +2,12 @@
 <div class="container">
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
-      <div class="chat-header"><h4>Discuss your huddle</h4></div>
       <% if chat_room.messages %>
-        <div class="messages">
+<!--         <div class="messages"> -->
           <% chat_room.messages.each do |message| %>
             <%= render partial: "messages/message", locals: { message: message, author: current_user == message.user }  %>
           <% end %>
-        </div>
+        <!-- </div> -->
       <% end %>
       <%= render partial: "messages/form", locals: { chat_room: chat_room, message: Message.new } %>
     </div>
