@@ -8,15 +8,15 @@
     <div class="plan-card-flex">
       <% current_user.listings_without_match.each_with_index do |listing, index| %>
       <div id="<%= listing.id %>" class="plan">
-      <div class="plan-card current-user-plan-card">
+        <div class="plan-card current-user-plan-card">
 
-        <div class="plan-card-info">
-          <div class="plan-card-emoji-round">
-            <p class="plan-card-emoji"><%= listing.activity %></p>
+          <div class="plan-card-info">
+            <div class="plan-card-emoji-round">
+              <p class="plan-card-emoji"><%= listing.activity %></p>
+            </div>
+            <p class="plan-card-datetime"><%= listing.offered_datetime_text %></p>
           </div>
-          <p class="plan-card-datetime"><%= listing.offered_datetime_text %></p>
         </div>
-      </div>
       </div>
       <% end %>
     </div>
@@ -43,21 +43,41 @@
     <% end %>
   </div>
 
-  <div id="render-plan">
+  <div class="add-plan-button">
+    <%= button_to "Create a plan", new_listing_path, method: :get, class: "show-card-button", remote: true %>
   </div>
+
+  <div id="render-plan">
+
+  </div>
+
+  <div id="render-add-plan">
+  </div>
+
 </div>
 
 <%= content_for :after_js do %>
 <script>
-  $(".plan").on("click", function(e){
-    var listing_id = $(this).attr("id");
-    $.ajax({
-      type: "GET",
-      url: "/listings/" + listing_id,
-      contentType: 'application/json',
-      dataType: 'script'
+  $(document).ready(function(){
+    $(".plan").on("click", function(e){
+      var listing_id = $(this).attr("id");
+      $.ajax({
+        type: "GET",
+        url: "/listings/" + listing_id,
+        contentType: 'application/json',
+        dataType: 'script'
+      });
     });
-  });
+
+    // $(".add-plan-button").on("click", function(e){
+    //   $.ajax({
+    //     type: "GET",
+    //     url: "/listings/new",
+    //     contentType: 'application/json',
+    //     dataType: 'script'
+    //   });
+    // });
+});
 </script>
 <% end %>
 
