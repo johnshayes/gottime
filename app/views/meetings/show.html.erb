@@ -2,29 +2,27 @@
 <div class="match-body-wrapper">
 
 <% content_for :navbar_title do %>
-  A Quokka match!
+  Yay, a match!
 <% end %>
 
-  <h2 class="text-center">Yay, a match!</h2>
-
-  <br>
   <div class="match-info">
     <%= image_tag @host_picture, id: "host_picture", class: "avatar-lg" %>
     <!-- <li><%= @listing.user.first_name %></li> -->
     <%= image_tag @participant_picture, id: "participant_picture", class: "avatar-lg"%>
     <!--   <li><%= @participants.first.user.first_name %></li> -->
+    <div>
+    <span class="match-emoji"><%= @meeting.listing.activity %></span>
+    <span class="match-timetext"><%= @listing.offered_datetime_text %></span>
+    </div>
   </div>
 
+<!--   <div class="match-summary ">
+    <div class="match-emoji"><%= @meeting.listing.activity %></div>
+    <div class="match-timetext"><%= @listing.offered_datetime_text %></div>
+  </div>
+ -->
   <br>
-
-  <div class="match-summary ">
-    <div class="match-emoji">
-      <%= @meeting.listing.activity %>
-    </div>
-    <div class="match-timetext">
-      <%= @listing.offered_datetime_text %>
-    </div>
-  </div>
+  <div class="chat-header"><h4>Discuss your plans...</h4></div>
 
   <%= render 'chat_room', chat_room: @chat_room %>
 
