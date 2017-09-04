@@ -1,8 +1,8 @@
 <div class="index-wrapper">
 
-<% content_for :navbar_title do %>
+  <% content_for :navbar_title do %>
   Add/choose listing
-<% end %>
+  <% end %>
 
   <div class="plan-card-fixed">
     <div class="plan-card-flex">
@@ -35,20 +35,18 @@
         <p class="plan-user"><%= listing.user.first_name %></p>
         <p class="plan-emoji"><%= listing.activity %></p>
         <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-        <%= link_to listing_path(listing) do  %>
-        <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
-        <% end %>
+        <i class="fa fa-info-circle chevron-color" aria-hidden="true"></i>
       </div>
     </div>
     <% end %>
-  </div>
 
-  <div class="add-plan-button">
-    <%= button_to "Create a plan", new_listing_path, method: :get, class: "show-card-button", remote: true %>
+
+    <div class="add-plan-button">
+      <%= button_to "Create a plan", new_listing_path, method: :get, class: "show-card-button", remote: true %>
+    </div>
   </div>
 
   <div id="render-plan">
-
   </div>
 
   <div id="render-add-plan">
@@ -77,7 +75,7 @@
     //     dataType: 'script'
     //   });
     // });
-});
+  });
 </script>
 <% end %>
 
