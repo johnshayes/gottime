@@ -1,4 +1,5 @@
 class ListingsController < ApplicationController
+
   def index
     me = current_user
     # extracting Blacklist contraints
