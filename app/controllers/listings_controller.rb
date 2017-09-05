@@ -23,7 +23,7 @@ class ListingsController < ApplicationController
     # listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "in use")
     # @listings = listings_fb + listings_local
     @listings = listings_fb
-
+    @listings.order(offered_datetime: "DESC")
   end
 
   def show
