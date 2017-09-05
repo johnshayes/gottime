@@ -27,6 +27,7 @@ class MeetingsController < ApplicationController
     @meeting.listing = @listing # Makes the connection i.e. sets listing_id onto this new meeting instance
     # To create new particpant instance
     @meeting.participants.build(user: current_user)
+    @meeting.participants.build(user_id: @listing.user_id )
     @meeting.chat_room = ChatRoom.new(name: "#{@listing.id}_chatroom")
 
     match_notification(@listing) if ENV['TWILIO_SEND'] == "true"

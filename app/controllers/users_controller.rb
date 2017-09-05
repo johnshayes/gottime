@@ -12,8 +12,8 @@ class UsersController < ApplicationController
     @meeting = Meeting.where(listing_id: @listings.ids)
 
     #overview of huddles I participated in
-    i_participated = Participant.where(user_id: @user.id)
-    meetings = Meeting.where(id: i_participated.ids).where(status: "active")
+    meeting_ids = Participant.where(user_id: @user.id).pluck(:meeting_id)
+    meetings = Meeting.where(id: meeting_ids, status: "active")
     @listings_participation = Listing.where(id: meetings.map(&:listing_id))
   end
 end
