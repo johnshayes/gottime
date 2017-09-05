@@ -27,11 +27,14 @@ class MeetingsController < ApplicationController
     @meeting.listing = @listing # Makes the connection i.e. sets listing_id onto this new meeting instance
     # To create new particpant instance
     @meeting.participants.build(user: current_user)
+    @meeting.participants.build(user_id: @listing.user_id )
     @meeting.chat_room = ChatRoom.new(name: "#{@listing.id}_chatroom")
 
     match_notification(@listing) if ENV['TWILIO_SEND'] == "true"
 
     if @meeting.save
+      @listing.status = "in use"
+      @listing.save
       redirect_to listing_meeting_path(@listing, @meeting) # i.e. Goes to meetings show page
     else
       redirect_to listing_path(@listing) # i.e. redirect to the listing detail page if it fails to save

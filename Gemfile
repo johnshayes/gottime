@@ -11,8 +11,11 @@ gem 'redis', '~> 3.0'
 gem 'cloudinary'
 gem 'carrierwave', '~> 0.11.2'
 gem 'omniauth-facebook'
-gem 'simple_form'
 gem 'koala', '~> 2.4'
+
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
+gem 'sidekiq-scheduler'
 
 gem 'autoprefixer-rails'
 gem 'bootstrap-sass'

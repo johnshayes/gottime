@@ -1,0 +1,15 @@
+:concurrency: 3
+:timeout: 60
+:verbose: true
+:queues:  # Queue priority: https://github.com/mperham/sidekiq/wiki/Advanced-Options
+  - default
+  - mailers
+
+:schedule:
+  change_listings_status_job:
+    every: '5m'
+    class: ChangeListingsStatusJob
+
+  change_meetings_status_job:
+    every: '5m'
+    class: ChangeMeetingsStatusJob

@@ -1,12 +1,9 @@
 .show-card {
   width: 100%;
-  box-shadow: 1px 1px 15px gray;
-  height: 220px;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   flex-direction: column;
-  background-color: rgba(185, 227, 243, 0.42);
   .show-card-info{
     display: inline-flex;
     flex-direction: row;
@@ -18,12 +15,12 @@
   .show-card-user{
   }
   .show-card-image{
-    width: 75px;
+    width: 120px;
     border-radius: 50%
   }
   .show-card-time {
     text-align: center;
-    margin: 5px 10px 0px 5px;
+    margin: 10px 10px 0px 10px;
 
   }
   .show-card-activity {
@@ -49,12 +46,4 @@
     text-decoration: none;
   }
 
-}
-
-.show-card-position {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: calc(100vh - 50px);
 }

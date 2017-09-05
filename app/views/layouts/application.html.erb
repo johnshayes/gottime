@@ -3,10 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-  <title><%= content_for?(:title) ? yield(:title) : "Quokka" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "Gottime?" %></title>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
+
+  <link rel="icon" type="image/png" href="<%= image_path 'favicon-32x32.png'%>" sizes="32x32" />
+  <link rel="icon" type="image/png" href="<%= image_path 'favicon-16x16.png'%>" sizes="16x16" />
+  <%= favicon_link_tag 'favicon-32x32.png' %>
+
 </head>
 <body>
 

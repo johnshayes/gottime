@@ -1,8 +1,8 @@
 <div class="index-wrapper">
 
-<% content_for :navbar_title do %>
+  <% content_for :navbar_title do %>
   Add/choose listing
-<% end %>
+  <% end %>
 
   <div class="plan-card-fixed">
     <div class="plan-card-flex">
@@ -24,7 +24,6 @@
 
   <div id="plan-listings" class="plan-listings">
     <% @listings.each do |listing| %>
-
     <div id="<%= listing.id %>" class="plan">
       <% if listing.photo_exist? %>
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
@@ -34,21 +33,25 @@
       <div class="plan-info">
         <p class="plan-user"><%= listing.user.first_name %></p>
         <p class="plan-emoji"><%= listing.activity %></p>
-        <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-        <%= link_to listing_path(listing) do  %>
-        <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+        <% time_difference = listing.offered_datetime - Time.now %>
+        <% if time_difference < 1.hour %>
+          <p class="plan-datetime"><%= "NOW" %></p>
+        <% else %>
+          <% hours_difference = (time_difference/3600).to_i %>
+          <p class="plan-datetime"><%= "+" + hours_difference.to_s  + "h" %></p>
         <% end %>
+        <i class="fa fa-info-circle chevron-color" aria-hidden="true"></i>
       </div>
     </div>
     <% end %>
-  </div>
 
-  <div class="add-plan-button">
-    <%= button_to "Create a plan", new_listing_path, method: :get, class: "show-card-button", remote: true %>
+
+    <div class="add-plan-button">
+      <%= button_to "Create a plan", new_listing_path, method: :get, class: "show-card-button", remote: true %>
+    </div>
   </div>
 
   <div id="render-plan">
-
   </div>
 
   <div id="render-add-plan">
@@ -77,7 +80,7 @@
     //     dataType: 'script'
     //   });
     // });
-});
+  });
 </script>
 <% end %>
 

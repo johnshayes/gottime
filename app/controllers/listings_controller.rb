@@ -19,9 +19,12 @@ class ListingsController < ApplicationController
     end
 
     users = User.where.not(id: blacklist_others_ids).where.not(id: blacklist_me_ids).where(uid: uids).pluck(:id)
-    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users)
-    listings_local = Listing.all.where.not(user_id: current_user.id)
-    @listings = listings_fb + listings_local
+    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users).where(status: "open")
+    # listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "in use")
+    # @listings = listings_fb + listings_local
+    @listings = listings_fb.order('offered_datetime ASC')
+
+
   end
 
   def show
@@ -31,14 +34,17 @@ class ListingsController < ApplicationController
         render :show
       }
       format.html {
-        # redirect_to listing_path(@listing)
+        render :show
       }
     end
   end
 
   def new
     @listing = Listing.new
-    @offered_datetime_text_options = [ "NOW", "+1h", "+2h", "TONIGHT", "NOW", "+1h", "+2h", "TONIGHT"]
+
+    # OPTIONS TO BE EXTRACTED FROM USER PROFILE LATER -- PERSONAL PREFERENCES
+    @offered_datetime_text_options = [ "NOW", "+1h", "+2h", "TONIGHT", "EVENING", "NOON", "MORNING", "+3h", "+4h", "+5h", "+6h", "+7h", "+8h", "+9h", "+10h", "+11h", "+12h"]
+
     @activity_options = [  "🤷", "🍽", "🎉", "💘", "🛒", "🎵", "🍰", "🎤", "🚀", "🚴", "🤡", "💬", "🆙", "🎧", "🥘",
 ]
     respond_to do |format|
@@ -76,18 +82,67 @@ class ListingsController < ApplicationController
     redirect_to listings_path
   end
 
+  private
+
   def listing_params
     params.require(:listing).permit(:activity, :offered_datetime_text)
   end
 
   def what_is_datetime_text?(offered_datetime_text)
     return case offered_datetime_text
-      when "NOW" then DateTime.now
+      when "NOW" then DateTime.now + 30.minutes
       when "+1h" then DateTime.now + 1.hours
       when "+2h" then DateTime.now + 2.hours
-      when "TONIGHT" then DateTime.now.change({ hour: 20 })
+      when "+3h" then DateTime.now + 3.hours
+      when "+4h" then DateTime.now + 4.hours
+      when "+5h" then DateTime.now + 5.hours
+      when "+6h" then DateTime.now + 6.hours
+      when "+7h" then DateTime.now + 7.hours
+      when "+8h" then DateTime.now + 8.hours
+      when "+9h" then DateTime.now + 9.hours
+      when "+10h" then DateTime.now + 10.hours
+      when "+11h" then DateTime.now + 11.hours
+      when "+12h" then DateTime.now + 12.hours
+      when "TONIGHT" then DateTime.now.change({ hour: 22 })
+      when "MORNING" then DateTime.now.change({ hour: 9})
+      when "NOON" then DateTime.now.change({ hour: 12})
+      when "EVENING" then DateTime.now.change({ hour: 18})
     end
   end
 
+    # def translate_datetime_back_to_text(datetime)
+    #   return case datetime
+    #   when datetime == hour: 22 then "TONIGHT"
+    #   when datetime == hour: 9 then "MORINING"
+    #   when datetime == hour: 12 then "NOON"
+    #   when datetime == hour: 18 then "EVENING"
+    #   end
+    #   now = Time.now
+    #   time_difference = datetime - now
+    #   return case time_difference
+    #   when time_difference < 1.hour then "NOW"
+    #   when time_difference > 1.hour then "+1h"
+    #   when time_difference > 2.hours then "+2h"
+    #   when time_difference > 3.hours then "+3h"
+    #   when time_difference > 4.hours then "+4h"
+    #   when time_difference > 5.hours then "+5h"
+    #   when time_difference > 6.hours then "+6h"
+    #   when time_difference > 7.hours then "+7h"
+    #   when time_difference > 8.hours then "+8h"
+    #   when time_difference > 9.hours then "+9h"
+    #   when time_difference > 10.hours then "+10h"
+    #   when time_difference > 11.hours then "+11h"
+    #   when time_difference > 12.hours then "+12h"
+    #   end
+    # end
+
+
 
 end
+
+
+
+
+
+
+
