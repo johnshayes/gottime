@@ -3,7 +3,7 @@
     <div class="show-card-position">
 
       <div class="show-card">
-        <%= link_to raw('<i class="pull-right btn btn-link fa fa-times-circle"></i>'), listings_path %>
+      <%= link_to raw('<i class="btn btn-link fa fa-times-circle pinned-topright"></i>'), listings_path %>
         <div class="show-card-user">
           <% if listing.photo_exist? %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "show-card-image" %>
