@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     #overview of huddles I participated in
     meeting_ids = Participant.where(user_id: @user.id).pluck(:meeting_id)
     meetings = Meeting.where(id: meeting_ids, status: "active")
-    @listings_participation = Listing.where(id: meetings.map(&:listing_id))
-    @listings_participation.order(created_at: "ASC")
+    @listings_participation = Listing.where(id: meetings.map(&:listing_id)).order("created_at ASC")
   end
 end
