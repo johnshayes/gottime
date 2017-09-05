@@ -24,7 +24,6 @@
 
   <div id="plan-listings" class="plan-listings">
     <% @listings.each do |listing| %>
-
     <div id="<%= listing.id %>" class="plan">
       <% if listing.photo_exist? %>
       <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "img-cirlce" %>
