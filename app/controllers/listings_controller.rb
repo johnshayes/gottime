@@ -22,12 +22,9 @@ class ListingsController < ApplicationController
     listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users).where(status: "open")
     # listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "in use")
     # @listings = listings_fb + listings_local
-    @listings = listings_fb
-    @listings.order(offered_datetime: "DESC")
+    @listings = listings_fb.order('offered_datetime ASC')
 
-    # current_time = Time.now
-    # time_difference = current_time - @listings.offered_datetime
-    # @display_time = time_difference.translate_datetime_back_to_text
+
   end
 
   def show

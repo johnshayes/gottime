@@ -33,7 +33,13 @@
       <div class="plan-info">
         <p class="plan-user"><%= listing.user.first_name %></p>
         <p class="plan-emoji"><%= listing.activity %></p>
-        <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+        <% time_difference = listing.offered_datetime - Time.now %>
+        <% if time_difference < 1.hour %>
+          <p class="plan-datetime"><%= "NOW" %></p>
+        <% else %>
+          <% hours_difference = (time_difference/3600).to_i %>
+          <p class="plan-datetime"><%= "+" + hours_difference.to_s  + "h" %></p>
+        <% end %>
         <i class="fa fa-info-circle chevron-color" aria-hidden="true"></i>
       </div>
     </div>
