@@ -40,6 +40,6 @@ class User < ApplicationRecord
   end
 
   def listings_without_match
-    listings.select { |listing| listing.meetings.empty? }
+    listings.select { |listing| listing.status == "open" }
   end
 end

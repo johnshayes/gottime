@@ -19,9 +19,11 @@ class ListingsController < ApplicationController
     end
 
     users = User.where.not(id: blacklist_others_ids).where.not(id: blacklist_me_ids).where(uid: uids).pluck(:id)
-    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users).where(status: "active")
-    listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "active")
-    @listings = listings_fb + listings_local
+    listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users).where(status: "open")
+    # listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "in use")
+    # @listings = listings_fb + listings_local
+    @listings = listings_fb
+
   end
 
   def show
