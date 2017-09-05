@@ -1,6 +1,6 @@
 
 <div class="chat-messaging-function">
-  <div class="messages-wrapper">
+  <div class="messages-wrapper messages">
     <% if chat_room.messages %>
       <% chat_room.messages.each do |message| %>
         <%= render partial: "messages/message", locals: { message: message, author: current_user == message.user }  %>
@@ -8,7 +8,7 @@
       <% end %>
   </div>
 
-  <div class="new-message-form">
+  <div class="new-message-form messages">
     <%= render partial: "messages/form", locals: { chat_room: chat_room, message: Message.new } %>
   </div>
 </div>
