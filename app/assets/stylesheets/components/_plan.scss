@@ -54,3 +54,11 @@
     height: 65px;
   }
 }
+
+#render-plan > #plan-detail > .body-wrapper > .show-card-position {
+  height: calc(100vh - 140px);
+}
+
+#standard-wrapper > #plan-detail > .body-wrapper > .show-card-position {
+  height: calc(100vh - 50px);
+}

@@ -21,6 +21,7 @@ module Gottime
     config.generators do |generate|
       generate.assets false
       generate.helper false
+      config.active_job.queue_adapter = :sidekiq
     end
 
     # Initialize configuration defaults for originally generated Rails version.
