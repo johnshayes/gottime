@@ -21,6 +21,8 @@
     <div class="match-timetext"><%= @listing.offered_datetime_text %></div>
   </div>
  -->
+
+ <%= link_to "I'm out, sorry!", meeting_path(@meeting), method: :patch, class: "btn btn-primary" %>
   <br>
   <div class="chat-header"><h4>Discuss your plans...</h4></div>
 </div>
