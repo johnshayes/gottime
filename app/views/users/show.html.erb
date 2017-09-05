@@ -1,74 +1,114 @@
 <div class="profile_background">
 
-<% content_for :navbar_title do %>
+  <% content_for :navbar_title do %>
   Manage profile
-<% end %>
-
-  <div class="profile_headding">
-    <h1><%= "Hi " + @user.first_name %></h1>
-    <p><strong>"Your currently active huddle:"</strong></p>
-  </div>
-  <% @listings_participation.each do |listing| %>
-
-    <div class="listing_card">
-      <p class="plan-emoji"><%= listing.activity %></p>
-      <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-      <%= link_to listing_meeting_path(listing) do  %>
-      <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
-      <% end %>
-    </div>
   <% end %>
+  <h1><%= "Hi " + @user.first_name %></h1>
+  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+    <div class="panel panel-default">
 
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+            <div class="profile_headding">
+              <p><strong>Your currently active huddle:</strong></p>
+            </div>
+          </a>
+        </h4>
+      </div>
 
-  <div class="profile_headding">
-    <p><strong>"See all your listings and their status!"</strong></p>
-  </div>
+      <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <% @listings_participation.each do |listing| %>
 
-  <% @listings.each do |listing| %>
-    <% meeting = Meeting.where(listing_id: listing.id).first %>
-    <% participant = Participant.where(meeting_id: meeting.id) if meeting %>
-    <%# i_participated = Participant.where(user_id: @user.id) %>
-    <%# meeting << Meeting.where(id: i_participated.ids) %>
-    <div class="listing_card <%= "listing_expired" if listing.status == "expired" %>">
-      <p class="plan-emoji"><%= listing.activity %></p>
-      <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-      <%= link_to listing_path(listing) do  %>
-      <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
-      <% end %>
-    </div>
-  <% end %>
-
-  <div class="profile_headding">
-    <p><strong>"Manage which friends can contact and see you!"</strong></p>
-    <p>"If you blacklist a friend, you won't see any of his postings and your friend won't see any of yours anymore. But don't worry, your friend will not know that you blacklisted him or her!"</p>
-  </div>
-  <% @user_friends.each do |friend| %>
-  <% facebook_friend = User.find_by(uid: friend["id"]) %>
-  <% facebook_friend_id = facebook_friend.id %>
-
-  <% blacklist = Blacklist.where(user_id: @user.id).where(friend_id: facebook_friend_id).first %>
-
-  <div class="friends_card <%= "blacklisted" if blacklist  %>">
-    <div class="col-xs-3">
-      <div class="friend_photo_wrapper">
-        <%= image_tag facebook_friend.facebook_picture_url.gsub("square","large"), class: "friend_photo" %>
+          <div class="listing_card">
+            <p class="plan-emoji"><%= listing.activity %></p>
+            <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+            <%= link_to listing_meeting_path(listing) do  %>
+            <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
 
-    <div class="col-xs-6">
-      <div class="friends_name">
-        <p><%= friend["name"].partition(" ").first %></p>
+
+    <div class="panel panel-default ">
+      <div class="panel-heading" role="tab" id="headingTwo">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <div class="profile_headding">
+              <p><strong>See all your listings and their status!</strong></p>
+            </div>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
+        <div class="panel-body">
+          <% @listings.each do |listing| %>
+          <% meeting = Meeting.where(listing_id: listing.id).first %>
+          <% participant = Participant.where(meeting_id: meeting.id) if meeting %>
+          <%# i_participated = Participant.where(user_id: @user.id) %>
+          <%# meeting << Meeting.where(id: i_participated.ids) %>
+          <div class="listing_card <%= "listing_expired" if listing.status == "expired" %>">
+            <p class="plan-emoji"><%= listing.activity %></p>
+            <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+            <%= link_to listing_path(listing) do  %>
+            <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+            <% end %>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
-    <div class="col-xs-3">
-      <div class="blacklist_button">
-        <%= link_to "Blacklist", blacklists_path(friend_id: facebook_friend_id), method: :post unless blacklist  %>
 
-        <%= link_to "Whitelist", blacklist_path(blacklist.id), method: :delete if blacklist %>
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingThree">
+        <h4 class="panel-title">
+          <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <div class="profile_headding">
+              <p><strong>Manage which friends can contact and see you!"</strong></p>
+            </div>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+        <div class="panel-body">
+          <p>If you blacklist a friend, you won't see any of his postings and your friend won't see any of yours anymore. But don't worry, your friend will not know that you blacklisted him or her!</p>
+
+          <% @user_friends.each do |friend| %>
+          <% facebook_friend = User.find_by(uid: friend["id"]) %>
+          <% facebook_friend_id = facebook_friend.id %>
+
+          <% blacklist = Blacklist.where(user_id: @user.id).where(friend_id: facebook_friend_id).first %>
+
+          <div class="friends_card <%= "blacklisted" if blacklist  %>">
+            <div class="col-xs-3">
+              <div class="friend_photo_wrapper">
+                <%= image_tag facebook_friend.facebook_picture_url.gsub("square","large"), class: "friend_photo" %>
+              </div>
+            </div>
+
+            <div class="col-xs-6">
+              <div class="friends_name">
+                <p><%= friend["name"].partition(" ").first %></p>
+              </div>
+            </div>
+            <div class="col-xs-3">
+              <div class="blacklist_button">
+                <%= link_to "Blacklist", blacklists_path(friend_id: facebook_friend_id), method: :post unless blacklist  %>
+
+                <%= link_to "Whitelist", blacklist_path(blacklist.id), method: :delete if blacklist %>
+              </div>
+            </div>
+          </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
-  <% end %>
 </div>
+
 
 
