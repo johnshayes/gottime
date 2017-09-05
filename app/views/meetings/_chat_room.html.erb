@@ -1,20 +1,16 @@
 
-<div class="chat-messages">
-<!--   <div class="row"> -->
-<!--     <div class="col-sm-6 col-sm-offset-3"> -->
-      <% if chat_room.messages %>
-<!--         <div class="messages"> -->
-          <% chat_room.messages.each do |message| %>
-            <%= render partial: "messages/message", locals: { message: message, author: current_user == message.user }  %>
-          <% end %>
-        <!-- </div> -->
+<div class="chat-messaging-function">
+  <div class="messages-wrapper">
+    <% if chat_room.messages %>
+      <% chat_room.messages.each do |message| %>
+        <%= render partial: "messages/message", locals: { message: message, author: current_user == message.user }  %>
+        <% end %>
       <% end %>
+  </div>
 
-  <div class="new-message">
+  <div class="new-message-form">
     <%= render partial: "messages/form", locals: { chat_room: chat_room, message: Message.new } %>
   </div>
-<!--     </div> -->
-<!--   </div> -->
 </div>
 
 <% content_for :after_js do %>

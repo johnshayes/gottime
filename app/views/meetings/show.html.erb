@@ -2,7 +2,7 @@
 <div class="match-body-wrapper">
 
 <% content_for :navbar_title do %>
-  Yay, a match!
+  <strong>Yay, a match!</strong>
 <% end %>
 
   <div class="match-info">
@@ -23,7 +23,8 @@
  -->
   <br>
   <div class="chat-header"><h4>Discuss your plans...</h4></div>
+</div>
 
   <%= render 'chat_room', chat_room: @chat_room %>
 
-</div>
+
