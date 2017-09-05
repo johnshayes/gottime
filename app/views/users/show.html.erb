@@ -9,11 +9,11 @@
     <p><strong><%=  "Your currently active huddle:" %></strong></p>
   </div>
   <% @listings_participation.each do |listing| %>
-
+    <% meeting_id = Meeting.find_by(listing_id: listing.id).id %>
     <div class="listing_card">
       <p class="plan-emoji"><%= listing.activity %></p>
       <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-      <%= link_to listing_meeting_path(listing) do  %>
+      <%= link_to listing_meeting_path(listing, meeting_id) do  %>
       <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
       <% end %>
     </div>
