@@ -41,6 +41,13 @@ class MeetingsController < ApplicationController
     end
   end
 
+  def update
+    @meeting = Meeting.find(params[:id])
+    @meeting.status = "inactive"
+    @meeting.save
+    redirect_to listings_path
+  end
+
 private
   def meeting_params
     params.require(:meeting).permit(:status) # What does :meeting refer to?
