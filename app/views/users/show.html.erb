@@ -6,7 +6,7 @@
 
   <div class="profile_headding">
     <h1><%= "Hi " + @user.first_name %></h1>
-    <p><strong><%=  "Your currently active huddle:" %></strong></p>
+    <p><strong>"Your currently active huddle:"</strong></p>
   </div>
   <% @listings_participation.each do |listing| %>
 
@@ -21,7 +21,7 @@
 
 
   <div class="profile_headding">
-    <p><strong><%=  "See all your listings and their status!" %></strong></p>
+    <p><strong>"See all your listings and their status!"</strong></p>
   </div>
 
   <% @listings.each do |listing| %>
@@ -39,8 +39,8 @@
   <% end %>
 
   <div class="profile_headding">
-    <p><strong><%=  "Manage which friends can contact and see you!" %></strong></p>
-    <p><%= "If you blacklist a friend, you won't see any of his postings and your friend won't see any of yours anymore. But don't worry, your friend will not know that you blacklisted him or her!" %></p>
+    <p><strong>"Manage which friends can contact and see you!"</strong></p>
+    <p>"If you blacklist a friend, you won't see any of his postings and your friend won't see any of yours anymore. But don't worry, your friend will not know that you blacklisted him or her!"</p>
   </div>
   <% @user_friends.each do |friend| %>
   <% facebook_friend = User.find_by(uid: friend["id"]) %>
