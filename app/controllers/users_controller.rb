@@ -15,6 +15,6 @@ class UsersController < ApplicationController
     meeting_ids = Participant.where(user_id: @user.id).pluck(:meeting_id)
     meetings = Meeting.where(id: meeting_ids, status: "active")
     @listings_participation = Listing.where(id: meetings.map(&:listing_id))
-    @listings_participation.order(created_at: "DESC")
+    @listings_participation.order(created_at: "ASC")
   end
 end
