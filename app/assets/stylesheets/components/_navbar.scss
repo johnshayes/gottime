@@ -4,7 +4,7 @@
   background: #DA3E52;
   transition: all 0.3s ease;
   height: 50px;
-  padding: 0px 30px;
+  padding: 0px 15px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -19,6 +19,7 @@
 /* Logo */
 .navbar-wagon-brand img {
   height: 40px;
+  padding: 5px;
 }
 
 /* User Avatar */
@@ -38,7 +39,7 @@
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  padding: 0 0;
 }
 
 /* Navbar link */
