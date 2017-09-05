@@ -22,8 +22,9 @@ class ListingsController < ApplicationController
     listings_fb = Listing.where.not(user_id: current_user.id).where(user_id: users).where(status: "open")
     # listings_local = Listing.all.where.not(user_id: current_user.id).where(status: "in use")
     # @listings = listings_fb + listings_local
-    @listings = listings_fb
-    @listings.order(offered_datetime: "DESC")
+    @listings = listings_fb.order('offered_datetime ASC')
+
+
   end
 
   def show
@@ -109,5 +110,39 @@ class ListingsController < ApplicationController
     end
   end
 
+    # def translate_datetime_back_to_text(datetime)
+    #   return case datetime
+    #   when datetime == hour: 22 then "TONIGHT"
+    #   when datetime == hour: 9 then "MORINING"
+    #   when datetime == hour: 12 then "NOON"
+    #   when datetime == hour: 18 then "EVENING"
+    #   end
+    #   now = Time.now
+    #   time_difference = datetime - now
+    #   return case time_difference
+    #   when time_difference < 1.hour then "NOW"
+    #   when time_difference > 1.hour then "+1h"
+    #   when time_difference > 2.hours then "+2h"
+    #   when time_difference > 3.hours then "+3h"
+    #   when time_difference > 4.hours then "+4h"
+    #   when time_difference > 5.hours then "+5h"
+    #   when time_difference > 6.hours then "+6h"
+    #   when time_difference > 7.hours then "+7h"
+    #   when time_difference > 8.hours then "+8h"
+    #   when time_difference > 9.hours then "+9h"
+    #   when time_difference > 10.hours then "+10h"
+    #   when time_difference > 11.hours then "+11h"
+    #   when time_difference > 12.hours then "+12h"
+    #   end
+    # end
+
+
 
 end
+
+
+
+
+
+
+
