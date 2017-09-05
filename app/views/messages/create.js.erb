@@ -6,4 +6,5 @@
   messagesContainer.insertAdjacentHTML('beforeend', '<%= j render "messages/message", message: @message, author: true %>');
   const input = document.querySelector('#message_text');
   input.value = '';
+  scrollLastMessageIntoView();
 <% end %>
