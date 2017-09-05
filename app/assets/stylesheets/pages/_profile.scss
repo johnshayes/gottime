@@ -1,23 +1,29 @@
 .profile_background {
   padding: 10px;
+  height: calc(100vh - 50px);
 }
 
-.listing_card {
-  border-bottom: 1px solid #E7E7E6;
-  padding: 17px 15px;
-  align-items: center center;
-  display: flex;
-  justify-content: space-between;
+.listing-card-wrapper {
+  .listing-card-wrapper:last-child .listing-card {
+    border-bottom: none;
+  }
+  .listing_card {
+    padding: 17px 15px;
+    align-items: center center;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
   // position: relativ;
   // height: 13vh;
   a {
-  color: #5D5D5C;
+    color: #5D5D5C;
   }
   p {
     color: #5D5D5C;
     margin-bottom: 0px;
     // margin-top: 6px;
   }
+}
 }
 
 .listing_expired {
@@ -49,7 +55,7 @@
   }
 }
 
-.profile_headding {
+.profile_heading {
   padding: 15px;
   // margin-top: 20px;
   padding-bottom: 0px;
@@ -96,3 +102,17 @@
   height: 40px;
   width: 40px;
 }
+
+.panel-group {
+  a:hover {
+    text-decoration: none;
+  }
+  a:active {
+    text-decoration: none;
+  }
+}
+
+
+
+
+
