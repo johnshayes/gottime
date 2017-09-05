@@ -2,7 +2,11 @@ class UsersController < ApplicationController
    def show
     # friends list
     @user = current_user
-    @user_friends = FacebookApiService.new(current_user.token).friends
+    if Rails.env.development?
+      @user_friends = User.pluck(:first_name, :uid).map { |user| {"id" => user[1], "name" => user[0]}}
+    else
+      @user_friends = FacebookApiService.new(current_user.token).friends
+    end
     @blacklist = Blacklist.new
 
     # listings overview
