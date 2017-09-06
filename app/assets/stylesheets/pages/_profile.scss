@@ -4,9 +4,6 @@
 }
 
 .listing-card-wrapper {
-  .listing-card-wrapper:last-child .listing-card {
-    border-bottom: none;
-  }
   .listing_card {
     padding: 17px 15px;
     align-items: center center;
@@ -24,6 +21,10 @@
     // margin-top: 6px;
   }
 }
+
+}
+.listing-card-wrapper:last-child .listing_card {
+  border-bottom: none;
 }
 
 .listing_expired {
