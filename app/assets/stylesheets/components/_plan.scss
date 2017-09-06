@@ -1,5 +1,5 @@
 .index-wrapper{
-  padding-top: 140px;
+  padding-top: 160px;
 }
 .plan {
   display: flex;
@@ -56,9 +56,14 @@
 }
 
 #render-plan > #plan-detail > .body-wrapper > .show-card-position > .show-card {
-  height: calc(100vh - 140px);
+  height: calc(100vh - 160px);
 }
 
 #standard-wrapper > #plan-detail > .body-wrapper > .show-card-position > .show-card {
   height: calc(100vh - 50px);
+}
+
+.add-button-size {
+  font-size: 40px;
+  color: #DA3E52;
 }
