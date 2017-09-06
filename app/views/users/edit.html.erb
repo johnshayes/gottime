@@ -1,0 +1,5 @@
+ <%= simple_form_for(@user) do |f| %>
+    <%= f.input :phone_number %>
+    <%= f.input :location %>
+    <%= link_to "update", user_path(@user), method: :patch, class: "btn btn-primary" %>
+  <% end %>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
-  <title><%= content_for?(:title) ? yield(:title) : "Gottime?" %></title>
+  <title><%= content_for?(:title) ? yield(:title) : "gotTime?" %></title>
   <%= csrf_meta_tags %>
   <%= action_cable_meta_tag %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
@@ -14,10 +14,13 @@
 
 </head>
 <body>
-
   <%= render 'shared/navbar' %>
-  <%= render 'shared/flashes' %>
-  <%= yield %>
+
+  <div class="body-wrapper">
+    <%= render 'shared/flashes' %>
+    <%= yield %>
+  </div>
+
   <%= javascript_include_tag 'application' %>
 
   <%= yield(:after_js) %>
