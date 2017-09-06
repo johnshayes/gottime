@@ -48,6 +48,7 @@
 
       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <% if @listings_participation.empty? %>
+          <p class="no-plan">Oh sad, looks like you have none... Let's change that!</p>
         <div class="panel-button">
           <%= link_to "Find a Hangout!", listings_path, class: "profile_button" %>
         </div>
@@ -81,21 +82,22 @@
       </div>
 
       <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
-        <% @listings.each do |listing| %>
           <% if @listings.empty? %>
+            <p class="no-plan">All you need is a plan! A plan is all you need!</p>
           <div class="panel-button">
             <%= link_to "Add a Plan!", new_listing_path, class: "profile_button" %>
           </div>
           <% else %>
+           <% @listings.each do |listing| %>
             <% meeting = Meeting.where(listing_id: listing.id).first %>
             <% participant = Participant.where(meeting_id: meeting.id) if meeting %>
             <div class="listing-card-wrapper">
               <%= link_to listing_path(listing) do  %>
-              <div class="listing_card <%= 'listing_expired' if listing.status == 'expired' %>">
-                <p class="plan-emoji"><%= listing.activity %></p>
-                <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-                <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
-              </div>
+                <div class="listing_card <%= 'listing_expired' if listing.status == 'expired' %>">
+                  <p class="plan-emoji"><%= listing.activity %></p>
+                  <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+                  <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+                </div>
               <% end %>
             </div>
           <% end %>
