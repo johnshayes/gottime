@@ -1,13 +1,10 @@
-.index-wrapper{
-  padding-top: 160px;
-}
 .plan {
   display: flex;
   align-items: center;
   padding-left: 10px;
 
   .plan-info {
-    height: 100px;
+    height: 80px;
     display: flex;
     align-items: center;
     flex-grow: 1;
@@ -55,13 +52,7 @@
   }
 }
 
-#render-plan > #plan-detail > .body-wrapper > .show-card-position > .show-card {
-  height: calc(100vh - 160px);
-}
 
-#standard-wrapper > #plan-detail > .body-wrapper > .show-card-position > .show-card {
-  height: calc(100vh - 50px);
-}
 
 .add-button-size {
   font-size: 40px;

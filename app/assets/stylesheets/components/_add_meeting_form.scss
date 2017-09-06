@@ -3,7 +3,7 @@
 }
 
 .column-spread-button {
-  margin: 40px 0px 20px 0px;
+  margin: 30px 0px 20px 0px;
 }
 
 .column-border {
@@ -37,16 +37,8 @@
 }
 
 .back-btn {
-  margin: 20px 15px 15px 15px;
+  margin: 10px 15px 15px 15px;
   color: $gray;
   font-size: 24px;
-}
-
-#render-plan > #plan-detail > .container-fluid > .add-plan-wrapper {
-  height: calc(100vh - 140px);
-}
-
-#standard-wrapper > #plan-detail > .container-fluid > .add-plan-wrapper {
-  height: calc(100vh - 50px);
 }
 

@@ -1,39 +1,40 @@
-<div class="index-wrapper">
 
-  <% content_for :navbar_title do %>
-  Add/choose listing
-  <% end %>
 
-  <div class="plan-card-fixed">
-    <div class="plan-text-centered">
-      <h2>Your current plans:</h2>
-    </div>
-    <div class="plan-card-flex">
-      <% current_user.listings_without_match.each_with_index do |listing, index| %>
-      <div id="<%= listing.id %>" class="plan">
-        <div class="plan-card current-user-plan-card">
+<% content_for :navbar_title do %>
+Add/choose listing
+<% end %>
 
-          <div class="plan-card-info">
-            <div class="plan-card-emoji-round">
-              <p class="plan-card-emoji"><%= listing.activity %></p>
-            </div>
-            <p class="plan-card-datetime"><%= listing.offered_datetime_text %></p>
+<div class="plan-card-fixed">
+  <div class="plan-text-centered">
+    <h2>Your current plans:</h2>
+  </div>
+  <div class="plan-card-flex">
+    <% current_user.listings_without_match.each_with_index do |listing, index| %>
+    <div id="<%= listing.id %>" class="plan">
+      <div class="plan-card current-user-plan-card">
+
+        <div class="plan-card-info">
+          <div class="plan-card-emoji-round">
+            <p class="plan-card-emoji"><%= listing.activity %></p>
           </div>
+          <p class="plan-card-datetime"><%= listing.offered_datetime_text %></p>
         </div>
       </div>
-      <% end %>
-      <div class="plan">
-        <div class="plan-card-add">
-          <div class="plan-card-info">
-            <%= link_to new_listing_path, method: :get, remote: true do %>
-            <i class="fa fa-plus-circle add-button-size" aria-hidden="true"></i>
-            <% end %>
-          </div>
+    </div>
+    <% end %>
+    <div class="plan">
+      <div class="plan-card-add">
+        <div class="plan-card-info">
+          <%= link_to new_listing_path, method: :get, remote: true do %>
+          <i class="fa fa-plus-circle add-button-size" aria-hidden="true"></i>
+          <% end %>
         </div>
       </div>
     </div>
   </div>
+</div>
 
+<div class="margin-own-plan-offset">
   <div id="plan-listings" class="plan-listings">
     <div class="plan-text-centered-body">
       <h2>Plans by friends:</h2>
@@ -60,14 +61,15 @@
     </div>
     <% end %>
   </div>
-
-  <div id="render-plan">
-  </div>
-
-  <div id="render-add-plan">
-  </div>
-
 </div>
+
+<div id="render-plan" class="margin-own-plan-offset">
+</div>
+
+<div id="render-add-plan" class="margin-own-plan-offset">
+</div>
+
+
 
 <%= content_for :after_js do %>
 <script>
