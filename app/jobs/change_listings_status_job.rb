@@ -4,7 +4,7 @@ class ChangeListingsStatusJob < ApplicationJob
   queue_as :default
 
   def perform
-    listings = Listing.where(status: "open")
+    listings = Listing.where(status: "open").where(status: "in use")
     current_time = Time.now
     listings.each do |listing|
       expiration_time = listing.offered_datetime

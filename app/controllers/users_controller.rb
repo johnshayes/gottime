@@ -12,7 +12,7 @@ class UsersController < ApplicationController
     # listings overview
     user_id = current_user.id
     @blacklist_friends = Blacklist.where(user_id: user_id)
-    @listings = Listing.where(user_id: user_id)
+    @listings = Listing.where(user_id: user_id).where.not(status: "expired")
     @meeting = Meeting.where(listing_id: @listings.ids)
 
     #overview of huddles I participated in

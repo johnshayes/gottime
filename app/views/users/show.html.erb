@@ -1,29 +1,45 @@
 <div class="body-wrapper">
   <div class="profile_background">
 
-  <% content_for :navbar_title do %>
-  Manage profile
-  <% end %>
-  <div class="profile_headding">
-    <h1><%= "Hi " + @user.first_name %></h1>
-    <p>
-      <%= current_user.phone_number %> (<%= current_user.location %>)
-    </p>
-    <i class="fa fa-pencil" aria-hidden="true"></i>
-  </div>
-  <%= simple_form_for(@user) do |f| %>
-    <%= f.input :phone_number, lable: @user.phone_number %>
-    <%= f.input :location, lable: @user.location %>
-    <%= f.submit "update", class: "btn btn-primary" %>
-  <% end %>
+    <% content_for :navbar_title do %>
+    Manage profile
+    <% end %>
+    <div class="profile_heading">
+      <h1><strong><%= "Hi " + @user.first_name %></strong></h1>
+      <p>
+        <%= current_user.phone_number %> (<%= current_user.location %>)
+      </p>
+      <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 
+        <div class="panel-heading panel-heading-padding" role="tab" id="headingFour">
+          <a role="button" data-toggle="collapse" href="#collapseFour" aria-expanded="true" aria-controls="collapseFour">
+            <div class="edit-btn">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
 
-  <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-    <div class="panel panel-default">
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+      <div class="panel-body">
+        <div class="profile_form">
+          <%= simple_form_for(@user) do |f| %>
+          <%= f.input :phone_number, lable: @user.phone_number %>
+          <%= f.input :location, lable: @user.location %>
+          <div class="button-profile-center">
+            <%= f.submit "update", class: "profile_button" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <div class="panel-heading" role="tab" id="headingOne">
         <h4 class="panel-title">
           <a role="button" data-toggle="collapse" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-            <div class="profile_headding">
+            <div class="profile_sub_heading">
               <p><strong>Your currently active huddle:</strong></p>
             </div>
           </a>
@@ -31,6 +47,11 @@
       </div>
 
       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+        <% if @listings_participation.empty? %>
+        <div class="panel-button">
+          <%= link_to "Find a Hangout!", listings_path, class: "profile_button" %>
+        </div>
+        <% else %>
         <div class="panel-body">
           <% @listings_participation.each do |listing| %>
           <% meeting_id = Meeting.find_by(listing_id: listing.id).id %>
@@ -45,14 +66,15 @@
           </div>
           <% end %>
         </div>
+        <% end %>
       </div>
 
 
       <div class="panel-heading" role="tab" id="headingTwo">
         <h4 class="panel-title">
           <a role="button" data-toggle="collapse" href="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-            <div class="profile_headding">
-              <p><strong>See all your listings and their status!</strong></p>
+            <div class="profile_sub_heading">
+            <p><strong>Your current active plans:</strong></p>
             </div>
           </a>
         </h4>
@@ -60,19 +82,23 @@
 
       <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
         <% @listings.each do |listing| %>
-        <% meeting = Meeting.where(listing_id: listing.id).first %>
-        <% participant = Participant.where(meeting_id: meeting.id) if meeting %>
-        <%# i_participated = Participant.where(user_id: @user.id) %>
-        <%# meeting << Meeting.where(id: i_participated.ids) %>
-        <div class="listing-card-wrapper">
-          <%= link_to listing_path(listing) do  %>
-          <div class="listing_card <%= 'listing_expired' if listing.status == 'expired' %>">
-            <p class="plan-emoji"><%= listing.activity %></p>
-            <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-            <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+          <% if @listings.empty? %>
+          <div class="panel-button">
+            <%= link_to "Add a Plan!", new_listing_path, class: "profile_button" %>
           </div>
+          <% else %>
+            <% meeting = Meeting.where(listing_id: listing.id).first %>
+            <% participant = Participant.where(meeting_id: meeting.id) if meeting %>
+            <div class="listing-card-wrapper">
+              <%= link_to listing_path(listing) do  %>
+              <div class="listing_card <%= 'listing_expired' if listing.status == 'expired' %>">
+                <p class="plan-emoji"><%= listing.activity %></p>
+                <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+                <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+              </div>
+              <% end %>
+            </div>
           <% end %>
-        </div>
         <% end %>
       </div>
 
@@ -80,7 +106,7 @@
       <div class="panel-heading" role="tab" id="headingThree">
         <h4 class="panel-title">
           <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-            <div class="profile_headding">
+            <div class="profile_sub_heading">
               <p><strong>Manage which friends can contact and see you!</strong></p>
             </div>
           </a>
@@ -123,11 +149,13 @@
 
           <% end %>
         </div>
+
+
       </div>
     </div>
 
+
   </div>
-</div>
 
 
 
