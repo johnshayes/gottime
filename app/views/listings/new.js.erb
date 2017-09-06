@@ -1,5 +1,6 @@
 $("#plan-listings").fadeOut();
 $("#render-add-plan").html("<%= j render "new_plan", listing: @listing, offered_datetime_text_options: @offered_datetime_text_options, activity_options: @activity_options, script: true %>");
 // $("#add-plan").fadeIn();
+$("#render-add-plan").addClass("negative-body-wrapper");
 $("#add-plan").addClass("magictime swashIn");
 
