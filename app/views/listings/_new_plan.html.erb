@@ -1,67 +1,85 @@
-<div id="add-plan">
-  <div class="body-wrapper">
+<div class="container-fluid">
+  <div class="add-plan-wrapper">
+    <div class="row">
+      <div id="add-plan">
+        <div class="body-wrapper">
+
+          <% content_for :navbar_title do %>
+          What do you want to do?
+          <% end %>
+
+          <div class="form">
+            <%= link_to raw('<i class="pull-right back-btn fa fa-times"></i>'), listings_path %>
+
+            <%= simple_form_for(listing) do |f| %>
+            <%= f.error_notification %>
 
 
-    <div class="container form">
-      <%= link_to raw('<i class="pull-right btn btn-link fa fa-times-circle"></i>'), listings_path %>
-
-      <%= simple_form_for(listing) do |f| %>
-      <%= f.error_notification %>
+            <%= f.hidden_field :offered_datetime_text, value: offered_datetime_text_options[0]  %>
+            <%= f.hidden_field :activity, value: activity_options[0]  %>
 
 
-      <%= f.hidden_field :offered_datetime_text, value: offered_datetime_text_options[0]  %>
-      <%= f.hidden_field :activity, value: activity_options[0]  %>
+
+            <div class="col-xs-12">
+              <div class="column-spread">
+                <p>When?</p>
+                <div class="column-border">
+                  <div class="arrow text-center">
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+
+                  <div class="selector offered_datetime_text_selector selector-margin-bottom">
+                    <% offered_datetime_text_options.each do |option| %>
+                    <div><%= option %></div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12">
+              <div class="column-spread">
+                <p>What?</p>
+                <div class="column-border">
+                  <div class="arrow text-center">
+                    <i class="fa fa-chevron-down"></i>
+                  </div>
+                  <div class="selector activity_selector">
+                    <% activity_options.each do |option| %>
+                    <div><%= option %></div>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-xs-12">
+              <div class="column-spread-button">
+                <div class="button-centered">
+                  <%= f.button :submit, "Go!", :class => "add-plan-button" %>
+                </div>
+              </div>
+            </div>
+            <% end %>
 
 
-      <br>
-      <br>
-
-      <div class="arrow text-center">
-        <i class="fa fa-chevron-down"></i>
+          </div>
+        </div>
       </div>
-
-      <div class="selector offered_datetime_text_selector">
-        <% offered_datetime_text_options.each do |option| %>
-        <div><%= option %></div>
-        <% end %>
-      </div>
-
-      <br>
-
-      <br>
-      <br>
-
-
-      <div class="arrow text-center">
-        <i class="fa fa-chevron-down"></i>
-      </div>
-      <div class="selector activity_selector">
-        <% activity_options.each do |option| %>
-        <div><%= option %></div>
-        <% end %>
-      </div>
-
-
-
-      <%= f.button :submit, "Go!" %>
-      <% end %>
-
-
     </div>
-
   </div>
 </div>
 
 <!-- The if clause is apparently necessary because in one case we load JQuery before the rest of the code and in the other case we want to load JQuery after some code is executed -->
 <% if script %>
-  <script>
-      $('.offered_datetime_text_selector').slick({
-        centerMode: true,
-        centerPadding: '6px',
-        slidesToShow: 3,
-        arrows: false,
-        swipeToSlide: true
-      });
+<script>
+  $('.offered_datetime_text_selector').slick({
+    centerMode: true,
+    centerPadding: '6px',
+    slidesToShow: 3,
+    arrows: false,
+    swipeToSlide: true
+  });
 
     // On before DateTime change
     $('.activity_selector').slick({
@@ -91,16 +109,18 @@
       $('#listing_activity').attr('value', activity_options_a[nextSlide]);
     });
   </script>
-<% else %>
+  <% else %>
   <%= content_for :after_js do %>
-    <script>
-        $('.offered_datetime_text_selector').slick({
-          centerMode: true,
-          centerPadding: '6px',
-          slidesToShow: 3,
-          arrows: false,
-          swipeToSlide: true
-        });
+  <script>
+    $('.offered_datetime_text_selector').slick({
+      centerMode: true,
+      centerPadding: '6px',
+      slidesToShow: 3,
+      arrows: false,
+      swipeToSlide: true,
+      touchMove: true,
+      accessibility: true
+    });
 
       // On before DateTime change
       $('.activity_selector').slick({
@@ -112,7 +132,9 @@
         draggable: true,
         focusOnSelect: true,
         mobileFirst: true,
-        waitForAnimate: false
+        waitForAnimate: false,
+        touchMove: true,
+        accessibility: true
       });
 
 
@@ -130,8 +152,8 @@
         $('#listing_activity').attr('value', activity_options_a[nextSlide]);
       });
     </script>
-  <% end %>
-<% end %>
+    <% end %>
+    <% end %>
 
 
 

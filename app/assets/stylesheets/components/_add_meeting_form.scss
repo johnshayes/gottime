@@ -1,0 +1,52 @@
+.column-spread {
+  margin: 20px 0px 20px 0px;
+}
+
+.column-spread-button {
+  margin: 40px 0px 20px 0px;
+}
+
+.column-border {
+  border: 1px solid black;
+  border-radius: 0.5em;
+  padding: 5px;
+}
+
+.button-centered {
+  text-align: center;
+}
+
+.add-plan-button {
+  background-color: #DA3E52;
+  border: none;
+  margin: 0px 10px 0px 10px;
+  width: 80%;
+  color: white;
+}
+.add-plan-button:active {
+ background-color: #DA3E52;
+ text-decoration: none;
+}
+.add-plan-button:hover {
+ background-color: #DA3E52;
+ text-decoration: none;
+}
+
+.selector-margin-bottom {
+  margin: 5px;
+}
+
+.back-btn {
+  margin: 20px 15px 15px 15px;
+  color: $gray;
+  font-size: 24px;
+}
+
+#render-plan > #plan-detail > .container-fluid > .add-plan-wrapper {
+  height: calc(100vh - 140px);
+}
+
+#standard-wrapper > #plan-detail > .container-fluid > .add-plan-wrapper {
+  height: calc(100vh - 50px);
+}
+
