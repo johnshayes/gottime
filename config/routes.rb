@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resources :meetings, only: [ :create, :show ]
   end
 
-  resources :meetings, only: [ :index ]
+  resources :meetings, only: [ :index, :edit, :update ]
 
   post 'twilio/voice' => 'twilio#voice'
 
