@@ -56,7 +56,10 @@ Add/choose listing
         <% hours_difference = (time_difference/3600).to_i %>
         <p class="plan-datetime"><%= "+" + hours_difference.to_s  + "h" %></p>
         <% end %>
-        <i class="fa fa-info-circle chevron-color" aria-hidden="true"></i>
+        <div>
+        <%= image_tag ("Chevron_right.svg"), :class => "chevron-size" %>
+          <!-- <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i> -->
+        </div>
       </div>
     </div>
     <% end %>
