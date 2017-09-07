@@ -1,3 +1,5 @@
+
+
 .plan-card-fixed {
   position: fixed;
   top: 50px;
@@ -8,10 +10,11 @@
 
 .meeting-card-flex {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  // border-bottom: 1px solid rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
   margin: 10px;
+
   a:link {
     color: black;
     text-decoration: none;
@@ -29,15 +32,19 @@
     text-decoration: none;
   }
   img {
-    width: 50px;
-    height: 50px;
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     border: 0.5px solid white;
   }
 }
 
+.meeting-card-user-avatars {
+
+}
+
 .meeting-card-info {
-  margin: 0;
+  // margin: 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -60,7 +67,16 @@
 
 .current-user-meeting-card {
   background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  // border-left: 1px solid rgba(0, 0, 0, 0.2);
 }
+// .plan:first-child .current-user-meeting-card {
+//     border-left: none;
+//   }
+
 
 .meeting-text-centered {
   text-align: left;
@@ -85,11 +101,11 @@
 }
 
 .meeting-card-avatar-current {
-
+  margin-right: -10px;
 }
 
-.meeting-card-avatar-current {
-
+.meeting-card-avatar-user {
+  margin-left: -10px;
 }
 
 
