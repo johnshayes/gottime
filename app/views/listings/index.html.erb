@@ -53,7 +53,7 @@
       <div id="collapseTwo" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo">
         <div class="plan-card-flex">
           <% current_user.listings_without_match.each_with_index do |listing, index| %>
-          <div id="<%= listing.id %>" class="plan">
+          <div id="<%= listing.id %>" class="plan listing">
             <div class="plan-card current-user-plan-card">
 
               <div class="plan-card-info">
