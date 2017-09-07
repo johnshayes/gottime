@@ -1,0 +1,5 @@
+meta_product_name: "gotTime?"
+meta_title: "gotTime? - meet friends spontanously"
+meta_description: "gotTime? app takes the hassle out of spontaneous hangouts with friends. You can see which of your friends are up for doing something soon - and make a plan - or suggest something yourself!"
+meta_image: "gottime_social_tag_image.png"                       # should exist in `app/assets/images/`
+twitter_account: "@gottimeapp"   # required for Twitter Cards
