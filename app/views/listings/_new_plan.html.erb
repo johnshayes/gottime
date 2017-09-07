@@ -8,7 +8,7 @@
           <% end %>
 
           <div class="form">
-            <%= link_to raw('<i class="pull-right back-btn fa fa-times"></i>'), listings_path %>
+            <%= link_to "skip", listings_path, class: "pull-right back-btn" %>
 
             <%= simple_form_for(listing) do |f| %>
             <%= f.error_notification %>
