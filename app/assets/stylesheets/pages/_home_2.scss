@@ -1,0 +1,66 @@
+.landing-background {
+  height: 100vh;
+  width: 100vw;
+  background-position-y: -25px;
+  background-repeat: no-repeat;
+}
+
+.sing-up-descriptions {
+  height: 75vh;
+  margin: 15px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.breakfast {
+  h2{
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+  }
+  h3 {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+    font-weight: 300;
+  }
+}
+
+.party {
+  h2{
+    color: white;
+    font-size: 30px;
+    text-align: right;
+    margin-left: 30px;
+    margin-top: 40px;
+    font-weight: 300;
+  }
+  h3 {
+    color: white;
+    font-size: 40px;
+    font-weight: 300;
+  }
+}
+
+.whatever {
+  // display: flex;
+  // justify-content: space-between;
+  // align-items: center;
+  h2{
+    color: white;
+    font-size: 30px;
+    // width: 225px;
+    margin-top: 50px;
+    margin-bottom: 5px;
+    font-weight: 300;
+  }
+  h3 {
+color: white;
+    font-size: 40px;
+    text-align: right;
+    margin-left: 15px;
+    font-weight: 300;
+    margin-top: 0px;
+  }
+}

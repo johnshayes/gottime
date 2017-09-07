@@ -13,11 +13,16 @@ Meet friends, be happy
 
   <div class="section section-log-in">
     <div class="background">
-      <div class="welcome">
-        <h1>Hey you! gotTime?</h1>
-        <h2>Meet your friends spontaneously!</h2>
-      </div>
+      <div class="landing-background emoji_home" style="background-image: url('<%= cl_image_path( "emoji_home" , height: 667, width: 375, crop: :fill) %>')">
+        <div class="welcome">
 
+          <h1>Hey you! gotTime?</h1>
+          <h2>Meet your friends spontaneously!</h2>
+        </div>
+        <div class="information-action-call">
+          <p>Swipe up to find out more!</p>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -27,33 +32,25 @@ Meet friends, be happy
 
       </div>
 
+      <div class="landing-background" style="background-image: url('<%= cl_image_path( "background_home" , height: 667, width: 375, crop: :fill) %>')">
 
-      <div class="text-row">
-        <div class="emoji emoji-left">
-          🤷
-        </div>
-        <div class="text-right">
-          Don't know what to do?
+        <div class="sing-up-descriptions">
+          <div class="breakfast">
+            <h2><strong>5p.m.</strong> - just woke up with a hangover…</h2>
+            <h3>🍰 NOW</h3>
+          </div>
+
+          <div class="party">
+            <h2><strong>Friday</strong> - forgot to make party plans…</h2>
+            <h3>🚀 TONIGHT</h3>
+          </div>
+
+          <div class="whatever">
+            <h2>Why is everyone busy??</h2>
+            <h3>🤷 +1h</h3>
+          </div>
         </div>
       </div>
-      <div class="text-row text-row-reverse">
-        <div class="emoji emoji-right">
-          🙌
-        </div>
-        <div class="text-left">
-          Add your plan or like a friend's
-        </div>
-      </div>
-      <div class="text-row">
-        <div class="emoji emoji-left">
-          🎉
-        </div>
-        <div class="text-right">
-          Have fun!
-        </div>
-      </div>
-
-
 
       <div class="spacer-bottom sticky-bottom">
       </div>
@@ -63,9 +60,37 @@ Meet friends, be happy
 
   <div class="section section-some-section3">
 
-  </div>
+    <div class="content">
+      <div class="spacer-top sticky-top">
 
-  <div class="section section-some-section4">
+      </div>
+
+      <div class="landing-background emoji_home" style="background-image: url('<%= cl_image_path( "emoji_home" , height: 667, width: 375, crop: :fill) %>')">
+
+        <div class="sing-up-descriptions page-3">
+          <div class="step-1">
+            <h3>📅</h3>
+            <h2 class="nummeration-signin">1.</h2>
+            <h2>Propose a plan to your facebook friends!</h2>
+          </div>
+
+          <div class="step-2">
+            <h2>2. Wait to be matched or select a friend to hang out with.</h2>
+            <h3>👫</h3>
+          </div>
+
+          <div class="step-3">
+            <h3>💃🏾🕺🏻  </h3>
+            <h2 class="nummeration-signin">3.</h2>
+            <h2>Fix the last details and then: Have fun!!</h2>
+          </div>
+        </div>
+      </div>
+
+      <div class="spacer-bottom sticky-bottom">
+      </div>
+    </div>
+
   </div>
 
 </div>
@@ -93,48 +118,48 @@ Meet friends, be happy
 
 
 <% content_for(:after_js) do %>
-  <%= javascript_tag do %>
-    $(document).ready(function() {
-      $('#fullpage').fullpage({
-        navigation: false,
-        navigationPosition: 'right',
-        sectionsColor: ['#f2f2f2', 'whitesmoke', '#7BAABE', 'whitesmoke', '#000'],
-        anchors:['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
-        onLeave: function(index, nextIndex, direction){
-          var leavingSection = $(this);
-        if(index == 1 && direction =='down'){
-          $('#arrow_up').toggleClass('hidden-arrow');
-        console.log("hi");
-        }
-        if(index == 3 && direction =='down'){
-          $('#arrow_down').toggleClass('hidden-arrow');
-        }
+<%= javascript_tag do %>
+$(document).ready(function() {
+$('#fullpage').fullpage({
+navigation: false,
+navigationPosition: 'right',
+sectionsColor: ['#f2f2f2', 'whitesmoke', '#7BAABE', 'whitesmoke', '#000'],
+anchors:['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
+onLeave: function(index, nextIndex, direction){
+var leavingSection = $(this);
+if(index == 1 && direction =='down'){
+$('#arrow_up').toggleClass('hidden-arrow');
+console.log("hi");
+}
+if(index == 3 && direction =='down'){
+$('#arrow_down').toggleClass('hidden-arrow');
+}
 
-        else if(index == 4 && direction == 'up'){
-          $('#arrow_down').toggleClass('hidden-arrow');
-        }
-        else if(index == 2 && direction == 'up'){
-          $('#arrow_up').toggleClass('hidden-arrow');
-        }
+else if(index == 4 && direction == 'up'){
+$('#arrow_down').toggleClass('hidden-arrow');
+}
+else if(index == 2 && direction == 'up'){
+$('#arrow_up').toggleClass('hidden-arrow');
+}
 
-      }
-    });
+}
+});
 
-    });
-
-
-
-    $(document).ready(function(){
-      $('#arrow_up').click(function(){
-        $.fn.fullpage.moveSectionUp();
-      });
-      $('#arrow_down').click(function(){
-        $.fn.fullpage.moveSectionDown();
-      });
-    });
+});
 
 
 
-  <% end %>
+$(document).ready(function(){
+$('#arrow_up').click(function(){
+$.fn.fullpage.moveSectionUp();
+});
+$('#arrow_down').click(function(){
+$.fn.fullpage.moveSectionDown();
+});
+});
+
+
+
+<% end %>
 <% end %>
 

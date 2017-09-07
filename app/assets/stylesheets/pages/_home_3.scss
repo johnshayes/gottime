@@ -1,0 +1,60 @@
+.page-3 {
+  height: 60vh;
+  margin: 70px 25px;
+}
+
+.emoji_home {
+  background-position-y: -46px;
+  background-repeat: no-repeat;
+}
+.step-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 25px;
+    font-weight: 300;
+  }
+  h3{
+    font-size: 40px;
+    margin-right: 10px;
+    font-weight: 300;
+  }
+}
+
+.step-2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h2 {
+    font-size: 25px;
+    text-align: right;
+    font-weight: 300;
+  }
+  h3{
+    font-size: 40px;
+    margin-left: 10px;
+    font-weight: 300;
+  }
+}
+
+.step-3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: -10px;
+  h2 {
+    font-size: 25px;
+    font-weight: 300;
+  }
+  h3{
+    font-size: 40px;
+    margin-right: 10px;
+    width: 171px;
+    font-weight: 300;
+  }
+}
+
+.nummeration-signin {
+  margin-right: 10px;
+}
