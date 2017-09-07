@@ -20,10 +20,12 @@ Rails.application.routes.draw do
     resources :messages, only: [ :create ]
   end
 
+  mount Attachinary::Engine => "/attachinary"
   mount ActionCable.server => "/cable"
 
   require "sidekiq/web"
   authenticate :user, lambda { |u| u.admin } do
     mount Sidekiq::Web => '/sidekiq'
   end
+
 end
