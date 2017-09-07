@@ -28,14 +28,16 @@
       </div>
       <div class="show-card-link">
         <% unless listing.owns_listing?(current_user) %>
-        <%= button_to "Create a huddle", listing_meetings_path(listing_id: listing.id, meeting: {status: "active"}), method: :post, class: "show-card-button" %>
+        <%= button_to "Hang out!", listing_meetings_path(listing_id: listing.id, meeting: {status: "active"}), method: :post, class: "show-card-button" %>
         <% end %>
 
         <% if listing.owns_listing?(current_user) %>
-        <%= button_to "Delete a huddle", listing_path(listing), method: :delete, class: "show-card-button" %>
+        <%= button_to "Delete your plan", listing_path(listing), method: :delete, class: "show-card-button" %>
         <% end %>
         <br>
-        <%= link_to "Dismiss", listings_path, class: "show-card-dismiss" %>
+        <div class="back-btn">
+          <%= link_to "dismiss", listings_path, class: "back-btn" %>
+        </div>
       </div>
 
     </div>
