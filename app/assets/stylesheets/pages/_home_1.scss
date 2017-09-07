@@ -63,7 +63,7 @@ a {
 
 .sticky-top {
   position: fixed;
-  top: 50px;
+  top: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -82,6 +82,7 @@ a {
 
 .arrow {
   font-size: 40px;
+  color: rgb(162, 160, 160);
 }
 
 .content {

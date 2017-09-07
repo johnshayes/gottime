@@ -1,5 +1,6 @@
 .column-spread {
   margin: 20px 0px 20px 0px;
+  text-align: center;
 }
 
 .column-spread-button {
@@ -7,7 +8,7 @@
 }
 
 .column-border {
-  border: 1px solid black;
+  border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
   padding: 5px;
 }
@@ -37,8 +38,8 @@
 }
 
 .back-btn {
-  margin: 10px 15px 15px 15px;
-  color: $gray;
-  font-size: 24px;
+  margin: 40px 24px 15px 0px;
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 16px;
 }
 
