@@ -2,7 +2,7 @@
 <div class="chat-messaging-function">
   <div class="messages-wrapper messages">
     <% if chat_room.messages %>
-      <% chat_room.messages.reverse.each do |message| %>
+      <% chat_room.messages.order(:created_at).each do |message| %>
         <%= render partial: "messages/message", locals: { message: message, author: current_user == message.user }  %>
         <% end %>
       <% end %>
