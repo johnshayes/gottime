@@ -24,7 +24,10 @@ class ListingsController < ApplicationController
     # @listings = listings_fb + listings_local
     @listings = listings_fb.order('offered_datetime ASC')
 
-
+    #overview of hangouts I participated in
+    meeting_ids = Participant.where(user_id: @user.id).pluck(:meeting_id)
+    meetings = Meeting.where(id: meeting_ids, status: "active")
+    @listings_participation = Listing.where(id: meetings.map(&:listing_id)).order("created_at ASC")
   end
 
   def show
