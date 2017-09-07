@@ -1,22 +1,44 @@
+.match-full-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .match-body-wrapper{
   // Encompasses everything on page, incl. messages
-  width: 300px;
   margin: 0px auto;
+  position: sticky;
+  top: 0px;
+  height: 170px;
   // iphone 6 is 375px, so the above 2 lines give 37.5px margin either side but also works on desktop
-  margin-top: 75px;
+  margin-top: 0px;
+  .match-emoji {
+    font-size: 25px;
+  }
+  h4 {
+    font-weight: normal;
+    font-size: 18px;
+    opacity: 0.5;
+  }
 }
 
 .match-info {
   display: flex;
+  padding: 5px 0px;
   align-items: center;
   padding-left: 20px;
   padding-right: 20px;
   justify-content: center;
+  img:first-child {
+    transform: translateX(10px);
+  }
+  img:last-child {
+    transform: translateX(-10px);
+  }
 }
 
 .avatar-lg {
-  width: 90px;
-  height: 90px;
+  width: 80px;
+  height: 80px;
   border-radius: 50%;
   flex: 0 0 auto;
   padding: 2px;

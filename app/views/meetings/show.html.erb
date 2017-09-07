@@ -1,32 +1,34 @@
 
-<div class="match-body-wrapper">
+<div class="match-full-wrapper">
+  <div class="match-body-wrapper">
 
-<% content_for :navbar_title do %>
-  <strong>Yay, a match!</strong>
-<% end %>
+    <% content_for :navbar_title do %>
+    <strong>Yay, a match!</strong>
+    <% end %>
 
-  <div class="match-info">
-    <%= image_tag @host_picture, id: "host_picture", class: "avatar-lg" %>
-    <!-- <li><%= @listing.user.first_name %></li> -->
-    <%= image_tag @participant_picture, id: "participant_picture", class: "avatar-lg"%>
-    <!--   <li><%= @participants.first.user.first_name %></li> -->
-    <div>
-    <span class="match-emoji"><%= @meeting.listing.activity %></span>
-    <span class="match-timetext"><%= @listing.offered_datetime_text %></span>
+    <div class="match-info">
+      <%= image_tag @host_picture, id: "host_picture", class: "avatar-lg" %>
+      <!-- <li><%= @listing.user.first_name %></li> -->
+      <%= image_tag @participant_picture, id: "participant_picture", class: "avatar-lg"%>
+      <!--   <li><%= @participants.first.user.first_name %></li> -->
     </div>
-  </div>
+    <div class="text-center">
+      <span class="match-emoji"><%= @meeting.listing.activity %></span>
+      <span class="match-timetext"><%= @listing.offered_datetime_text %></span>
+    </div>
 
 <!--   <div class="match-summary ">
     <div class="match-emoji"><%= @meeting.listing.activity %></div>
     <div class="match-timetext"><%= @listing.offered_datetime_text %></div>
   </div>
- -->
+-->
 
- <%= link_to "I'm out, sorry!", meeting_path(@meeting), method: :patch, class: "btn btn-primary" %>
-  <br>
-  <div class="chat-header"><h4>Discuss your hangout...</h4></div>
+  <% link_to "I'm out, sorry!", meeting_path(@meeting), method: :patch, class: "btn btn-primary" %>
+  <div class="text-center">
+    <h4>Discuss your hangout...</h4>
+  </div>
 </div>
 
-  <%= render 'chat_room', chat_room: @chat_room %>
+<%= render 'chat_room', chat_room: @chat_room %>
 
-
+</div>
