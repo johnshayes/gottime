@@ -35,7 +35,9 @@
         <%= button_to "Delete a huddle", listing_path(listing), method: :delete, class: "show-card-button" %>
         <% end %>
         <br>
-        <%= link_to "Dismiss", listings_path, class: "show-card-dismiss" %>
+        <div class="back-btn">
+          <%= link_to "dismiss", listings_path, class: "back-btn" %>
+        </div>
       </div>
 
     </div>
