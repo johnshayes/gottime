@@ -1,0 +1,95 @@
+.plan-card-fixed {
+  position: fixed;
+  top: 50px;
+  width: 100%;
+  background: white;
+  z-index: 1000
+}
+
+.meeting-card-flex {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  // border-bottom: 1px solid rgba(0,0,0,0.3);
+  margin: 10px;
+  a:link {
+    color: black;
+    text-decoration: none;
+  }
+  a:visited {
+    color: black;
+    text-decoration: none;
+  }
+  a:hover {
+    color: black;
+    text-decoration: none;
+  }
+  a:active {
+    color: black;
+    text-decoration: none;
+  }
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 0.5px solid white;
+  }
+}
+
+.meeting-card-info {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0px 10px 0px 10px;
+}
+
+.meeting-card-emoji-round {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+.meeting-card-emoji {
+  font-size: 30px;
+  margin: 0
+}
+.meeting-card-datetime{
+}
+
+.current-user-meeting-card {
+  background-color: white;
+}
+
+.meeting-text-centered {
+  text-align: left;
+  h2 {
+    margin-top: 5px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: lighter;
+  }
+}
+
+.meeting-text-centered-body {
+  text-align: left;
+  h2 {
+    margin-top: 20px;
+    margin-bottom: 0px;
+    margin-left: 10px;
+    font-size: 18px;
+    font-weight: lighter;
+  }
+}
+
+.meeting-card-avatar-current {
+
+}
+
+.meeting-card-avatar-current {
+
+}
+
+
