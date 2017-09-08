@@ -23,32 +23,34 @@
             <div class="column-spread">
               <p class="add-description">When?</p>
               <div class="column-border">
-                <div class="scale">
-                <%= image_tag(cl_image_path( "lineal" , height: 50, width: 300, crop: :fill), class: "scale") %>
-                </div>
 
-                <div class="selector offered_datetime_text_selector selector-margin-bottom">
+                <i class="fa fa-angle-down" aria-hidden="true"></i>
+
+                <div class="selector offered_datetime_text_selector selector-margin-bottom no-margin">
                   <% offered_datetime_text_options.each do |option| %>
-                  <div><%= option %></div>
+                    <div><%= option %></div>
                   <% end %>
                 </div>
-              </div>
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+
             </div>
+          </div>
           </div>
 
           <div class="col-xs-12">
             <div class="column-spread">
               <p class="add-description">What?</p>
               <div class="column-border">
-                <div class="scale">
-                  <%= image_tag(cl_image_path( "lineal" , height: 50, width: 300, crop: :fill), class: "scale") %>
-                </div>
-                <div class="selector activity_selector">
+
+                  <i class="fa fa-angle-down" aria-hidden="true"></i>
+                <div class="selector activity_selector no-margin">
                   <% activity_options.each do |option| %>
                   <div><%= option %></div>
                   <% end %>
                 </div>
-              </div>
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+
+                </div>
             </div>
           </div>
 
