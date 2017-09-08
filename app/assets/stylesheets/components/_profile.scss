@@ -24,16 +24,17 @@
   border-bottom: none;
 }
 
-// .listing-card-infos {
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-// }
-
-.listing_card_link {
-   display: flex;
+.listing-card-infos {
+  display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.listing_card_link {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 46vw;
 }
 
 .listing_expired {

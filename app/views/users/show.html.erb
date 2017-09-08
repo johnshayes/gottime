@@ -59,14 +59,14 @@
         <% participants = Participant.where(meeting_id: listing.meetings.ids) %>
         <div class="listing-card-wrapper">
           <div class="listing_card">
-            <div class="meeting-card-user-avatars">
+            <div class="listing_card_link">
+                <%= link_to listing_meeting_path(listing, meeting_id) do  %>
+                <div class="meeting-card-user-avatars">
 
                 <%= image_tag participants[0].user.facebook_picture_url, class: "meeting-card-avatar-current" %>
                 <%= image_tag participants[1].user.facebook_picture_url, class: "meeting-card-avatar-user" %>
 
               </div>
-            <div class="listing_card_link">
-              <%= link_to listing_meeting_path(listing, meeting_id) do  %>
               <div class="listing-card-infos">
                 <p class="plan-emoji"><%= listing.activity %></p>
                 <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
