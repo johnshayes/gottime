@@ -6,13 +6,13 @@
 .listing-card-wrapper {
   .listing_card {
     padding: 17px 15px;
-    align-items: center center;
+    align-items: center;
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid rgba(0,0,0,0.2);
-  a {
-    color: #5D5D5C;
-  }
+  // a {
+  //   color: #5D5D5C;
+  // }
   p {
     color: #5D5D5C;
     margin-bottom: 0px;
@@ -22,6 +22,18 @@
 }
 .listing-card-wrapper:last-child .listing_card {
   border-bottom: none;
+}
+
+// .listing-card-infos {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+.listing_card_link {
+   display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .listing_expired {
@@ -157,6 +169,8 @@
  text-decoration: none;
 }
 
+
+
 .button-profile-center {
   text-align: center;
 }
@@ -171,4 +185,24 @@
 
 .panel-heading-index {
   border-bottom: 1px solid rgba(0,0,0,0.2) !important;
+}
+.opt-out-btn {
+  background-color: #DA3E52;
+  border: none;
+  // margin: 0px 10px 0px 10px;
+  // width: 150px;
+  color: white;
+  padding: 7px;
+  text-align: center;
+  border-radius: 0.5em;
+  .opt-out-btn:active {
+   background-color: #DA3E52;
+   color: white;
+   text-decoration: none;
+  }
+  .opt-out-btn:hover {
+   background-color: #DA3E52;
+   color: white;
+   text-decoration: none;
+  }
 }

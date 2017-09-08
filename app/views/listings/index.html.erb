@@ -14,6 +14,9 @@
 
       <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
         <div class="meeting-card-flex">
+        <% if @listings_participation.empty? %>
+          <p>Oh sad, looks like you have none... Let's change that!</p>
+        <% else %>
           <% @listings_participation.each do |listing| %>
           <% participants = Participant.where(meeting_id: listing.meetings.ids) %>
           <% meeting_id = Meeting.find_by(listing_id: listing.id).id %>
@@ -34,6 +37,7 @@
               </div>
             </div>
           </div>
+          <% end %>
           <% end %>
           <% end %>
         </div>

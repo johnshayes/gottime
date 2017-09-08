@@ -17,7 +17,7 @@ class ChangeListingsStatusJob < ApplicationJob
     listings = Listing.where(status: "in use")
     current_time = Time.now
     listings.each do |listing|
-      expiration_time = listing.offered_datetime
+      expiration_time = listing.offered_datetime + 5.hours
       if current_time > expiration_time
         listing.status = "expired"
         listing.save

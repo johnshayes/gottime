@@ -6,7 +6,7 @@
     // iphone 6 is 375px, so the above 2 lines give 37.5px margin either side but also works on desktop
     background-color: #f5f5f5;
     padding: 10px;
-    padding-bottom: 30px;
+    padding-bottom: 60px;
     // minus navbar / chat header / chat form
     height: calc(98vh - 250px);
     overflow-y: scroll;

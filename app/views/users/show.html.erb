@@ -56,14 +56,28 @@
       <div class="panel-body">
         <% @listings_participation.each do |listing| %>
         <% meeting_id = Meeting.find_by(listing_id: listing.id).id %>
+        <% participants = Participant.where(meeting_id: listing.meetings.ids) %>
         <div class="listing-card-wrapper">
-          <%= link_to listing_meeting_path(listing, meeting_id) do  %>
           <div class="listing_card">
-            <p class="plan-emoji"><%= listing.activity %></p>
-            <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
-            <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i>
+            <div class="meeting-card-user-avatars">
+
+                <%= image_tag participants[0].user.facebook_picture_url, class: "meeting-card-avatar-current" %>
+                <%= image_tag participants[1].user.facebook_picture_url, class: "meeting-card-avatar-user" %>
+
+              </div>
+            <div class="listing_card_link">
+              <%= link_to listing_meeting_path(listing, meeting_id) do  %>
+              <div class="listing-card-infos">
+                <p class="plan-emoji"><%= listing.activity %></p>
+                <p class="plan-datetime"><%= listing.offered_datetime_text%></p>
+              <% end %>
+              </div>
+            </div>
+            <!-- <i class="fa fa-chevron-right chevron-color" aria-hidden="true"></i> -->
+            <div>
+              <%= link_to "I'm out", meeting_path(meeting_id), method: :patch, class: "opt-out-btn" %>
+            </div>
           </div>
-          <% end %>
         </div>
         <% end %>
       </div>
