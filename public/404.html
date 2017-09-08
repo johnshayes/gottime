@@ -4,7 +4,9 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  .rails-default-error-page {
+
+
+  /*.rails-default-error-page {
     background-color: #EFEFEF;
     color: #2E2F30;
     text-align: center;
@@ -50,18 +52,58 @@
     border-top-color: #DADADA;
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
+  }*/
+  .whoops {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .whoops h2 {
+    font-family: Helvetica, 500, sans-serif;
+  }
+
+  .BLBrianimg {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+  .BLBrianimg img{
+    width: 80vw;
+  }
+  .help-btn {
+    background-color: #DA3E52;
+    padding: 15px;
+    border-radius: 5px;
+   /* width: 50px;*/
+    color: white;
+    text-decoration: none;
+    margin: 40px;
+  }
+
+  .help-btn a {
+     font-style: Helvetica sans-serif;
   }
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
-  <div class="dialog">
+  <!-- <div class="dialog">
     <div>
       <h1>The page you were looking for doesn't exist.</h1>
       <p>You may have mistyped the address or the page may have moved.</p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p>If you are the application owner check the logs for more information.</p> -->
+ <!--  </div> -->
+  <div class="whoops">
+    <h2>Whoops, that is unexpected... sorry about that!</h2>
+    <div class="BLBrianimg">
+      <img src="BadLuckBrian.jpg" alt="Bad Luck Brian 404 Meme">
+    </div>
+
+    <a href="http://www.gottime.coffee" class="help-btn">Take me back to gotTime!</a>
   </div>
 </body>
 </html>
