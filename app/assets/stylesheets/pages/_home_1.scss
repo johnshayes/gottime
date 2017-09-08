@@ -63,7 +63,7 @@ a {
 
 .sticky-top {
   position: fixed;
-  top: 50px;
+  top: 25px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -80,8 +80,8 @@ a {
   visibility: hidden;
 }
 
-.arrow {
-  font-size: 40px;
+.scale {
+  width: 100%;
 }
 
 .content {

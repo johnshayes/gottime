@@ -11,6 +11,8 @@
   display: flex;
   justify-content: space-around;
   border-bottom: 1px solid rgba(0,0,0,0.3);
+  margin-top: -10px;
+  margin-bottom: 10px;
   a:link {
     color: black;
     text-decoration: none;
@@ -53,9 +55,9 @@
 .plan-card-datetime{
 }
 
-.current-user-plan-card {
-  background-color: white;
-}
+// .current-user-plan-card {
+//   background-color: white;
+// }
 
 .plan-text-centered {
   text-align: left;
@@ -63,8 +65,8 @@
     margin-top: 5px;
     margin-bottom: 0px;
     margin-left: 10px;
-    font-size: 18px;
-    font-weight: lighter;
+    font-size: 16px;
+    font-weight: 400;
   }
 }
 

@@ -1,8 +1,10 @@
 <div id="plan-detail">
-    <div class="show-card-position">
+  <div class="show-card-position">
 
-      <div class="show-card">
-      <%= link_to raw('<i class="btn btn-link fa fa-times-circle pinned-topright"></i>'), listings_path %>
+    <div class="show-card">
+      <div class="show-card-top-section">
+
+
         <div class="show-card-user">
           <% if listing.photo_exist? %>
           <%= image_tag "https://kitt.lewagon.com/placeholder/users/mwahrlich", class: "show-card-image" %>
@@ -10,27 +12,34 @@
           <%= image_tag listing.user.facebook_picture_url.gsub("square","large"), class: "show-card-image" %>
           <% end %>
         </div>
-        <div class="show-card-info">
+        <div class="show-card-top-section-infos">
           <div class="show-card-time">
-            <p>When</p>
-            <em> <%= listing.offered_datetime_text %></em>
+            <%= listing.offered_datetime_text %>
           </div>
 
           <div class="show-card-activity">
-            <p>What</p>
-            <em> <%= listing.activity %> </em>
+            <%= listing.activity %>
           </div>
         </div>
-        <div class="show-card-link">
-          <% unless listing.owns_listing?(current_user) %>
-          <%= button_to "Create a huddle", listing_meetings_path(listing_id: listing.id, meeting: {status: "active"}), method: :post, class: "show-card-button" %>
-          <% end %>
+      </div>
 
-          <% if listing.owns_listing?(current_user) %>
-          <%= button_to "Delete a huddle", listing_path(listing), method: :delete, class: "show-card-button" %>
-          <% end %>
-        </div>
+      <div class="show-card-info">
 
       </div>
+      <div class="show-card-link">
+        <% unless listing.owns_listing?(current_user) %>
+        <%= button_to "Hang out!", listing_meetings_path(listing_id: listing.id, meeting: {status: "active"}), method: :post, class: "show-card-button" %>
+        <% end %>
+
+        <% if listing.owns_listing?(current_user) %>
+        <%= button_to "Delete your plan", listing_path(listing), method: :delete, class: "show-card-button" %>
+        <% end %>
+        <br>
+        <div class="back-btn">
+          <%= link_to "dismiss", listings_path, class: "back-btn" %>
+        </div>
+      </div>
+
     </div>
+  </div>
 </div>

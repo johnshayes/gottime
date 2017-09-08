@@ -36,7 +36,7 @@ Meet friends, be happy
 
         <div class="sing-up-descriptions">
           <div class="breakfast">
-            <h2><strong>5p.m.</strong> - just woke up with a hangover…</h2>
+            <h2><strong>3 p.m.</strong> - just woke up with a hangover…</h2>
             <h3>🍰 NOW</h3>
           </div>
 
@@ -123,7 +123,7 @@ $(document).ready(function() {
 $('#fullpage').fullpage({
 navigation: false,
 navigationPosition: 'right',
-sectionsColor: ['#f2f2f2', 'whitesmoke', '#7BAABE', 'whitesmoke', '#000'],
+sectionsColor: ['white', 'white', 'white' ],
 anchors:['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
 onLeave: function(index, nextIndex, direction){
 var leavingSection = $(this);
@@ -131,11 +131,11 @@ if(index == 1 && direction =='down'){
 $('#arrow_up').toggleClass('hidden-arrow');
 console.log("hi");
 }
-if(index == 3 && direction =='down'){
+if(index == 2 && direction =='down'){
 $('#arrow_down').toggleClass('hidden-arrow');
 }
 
-else if(index == 4 && direction == 'up'){
+else if(index == 3 && direction == 'up'){
 $('#arrow_down').toggleClass('hidden-arrow');
 }
 else if(index == 2 && direction == 'up'){

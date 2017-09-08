@@ -1,29 +1,32 @@
 <div class="navbar-wagon navbar-fixed">
-  <!-- Logo -->
-  <%= link_to root_path, class: "navbar-wagon-brand" do %>
-    <%= image_tag "logo_white.png" %>
+
+<!--  <div class="navbar-title">
+    <%= content_for?(:navbar_title) ? yield(:navbar_title) : "Meet friends, be happy!" %>
+  </div> -->
+
+  <% if current_user %>
+    <%= link_to raw('<i class="fa fa-chevron-left back-button"></i>'), :back %>
+    <%= link_to raw('<div class="nav-bar-button">your plans</div>'), listings_path + "#you"  %>
+    <%= link_to raw('<div class="nav-bar-button">friends&#39; plans</div>'), listings_path + "#friends" %>
   <% end %>
 
-
-  <div class="navbar-title">
-    <%= content_for?(:navbar_title) ? yield(:navbar_title) : "Meet friends, be happy!" %>
-  </div>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-
     <% if user_signed_in? %>
 
     <div class="navbar-wagon-item hidden-md hidden-lg">
       <div class="dropdown">
-        <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
-        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+        <div class="avatar-protection dropdown-toggle" id="navbar-wagon-menu", data-toggle="dropdown">
+          <% avatar_url = current_user.facebook_picture_url || "http://placehold.it/30x30" %>
+          <%= image_tag avatar_url, class: "avatar" %>
+        </div>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
           <li>
             <%= link_to user_path(current_user) do %>
-            <i class="fa fa-user"></i> <%= t(".profile", default: "Profile") %>
+            <i class="fa fa-cog"></i> <%= t(".profile", default: "Profile") %>
             <% end %>
           </li>
-          <li>
+<!--           <li>
             <%= link_to listings_path do %>
             <i class="fa fa-home"></i>  <%= t(".profile", default: "Home") %>
             <% end %>
@@ -32,7 +35,7 @@
             <%= link_to new_listing_path do %>
             <i class="fa fa-plus-circle"></i>  <%= t(".profile", default: "Add Plan") %>
             <% end %>
-          </li>
+          </li> -->
           <li>
             <%= link_to destroy_user_session_path, method: :delete do %>
             <i class="fa fa-sign-out"></i>  <%= t(".sign_out", default: "Log out") %>
