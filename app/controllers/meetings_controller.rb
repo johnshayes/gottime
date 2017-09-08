@@ -45,7 +45,7 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.find(params[:id])
     @meeting.status = "inactive"
     @meeting.save
-    redirect_to listings_path
+    redirect_to user_path(current_user)
   end
 
 private
